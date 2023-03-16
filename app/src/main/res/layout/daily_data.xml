@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/dailydiv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/month_name"
+        android:layout_marginBottom="10dp"
+        android:elevation="2dp"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#00232323" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+           >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:padding="5dp"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:id="@+id/dailydate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/date_bg"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="2dp"
+                    android:text="Wed"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.111" />
+
+                <TextView
+                    android:id="@+id/dailyincom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/rupee2"
+                    android:padding="5dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/dailyexpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="260dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/rupee2"
+                    android:padding="5dp"
+                    android:text="TextView"
+                    android:textColor="#A30000"
+                    android:textSize="15dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.214" />
+
+                <TextView
+                    android:id="@+id/date_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="00"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chilrecyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
