@@ -23,6 +23,7 @@ import java.util.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+var sel_mont=""
 
 /**
  * A simple [Fragment] subclass.
@@ -125,7 +126,7 @@ class input_data : DialogFragment() {
             }
             println(todaydate+"....")
             val try_date=todaydate
-            val deardata=yeardata(0,try_date,type,title,des,month, amount)
+            val deardata=yeardata(0,try_date,type,title,des, sel_mont, amount)
             dViewmodel.addData(deardata)
             dismiss()
 //            val fragmentManager=parentFragmentManager
@@ -146,9 +147,11 @@ class input_data : DialogFragment() {
         val month = calendar.get(Calendar.MONTH)
         val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
         var selectedDate=""
+
         val datePickerDialog = DatePickerDialog(context,
             { view, selectedYear, selectedMonth, selectedDayOfMonth ->
                  selectedDate = "$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear"
+                sel_mont = "${selectedMonth + 1}/$selectedYear"
                 textView1.text = selectedDate
 
             },

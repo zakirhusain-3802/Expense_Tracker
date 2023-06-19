@@ -19,6 +19,7 @@ import java.util.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+var sel_mont1=""
 
 /**
  * A simple [Fragment] subclass.
@@ -133,7 +134,7 @@ class update_fragment() : DialogFragment() {
                 type = "Income"
                 Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             }
-            val updateUSER = yeardata(id, currentdate, type, title, des, month, amount)
+            val updateUSER = yeardata(id, currentdate, type, title, des, sel_mont1, amount)
             duViewmodel.updateData(updateUSER)
             dismiss()
         }
@@ -148,6 +149,7 @@ class update_fragment() : DialogFragment() {
         val datePickerDialog = DatePickerDialog(context,
             { view, selectedYear, selectedMonth, selectedDayOfMonth ->
                 val selectedDate = "$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear"
+                sel_mont1 = "${selectedMonth + 1}/$selectedYear"
                 textView.text = selectedDate
             },
             year, month, dayOfMonth)

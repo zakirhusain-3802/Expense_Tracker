@@ -105,6 +105,11 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 
 
+
+
+
+
+
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
 
         mUserViewModel.yeardata(current_month,"Expense")
@@ -345,7 +350,6 @@ class HomeFragment : Fragment(), recycle_Interface {
             dates.add(calendar.time)
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
-
         return dates
 
     }

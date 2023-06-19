@@ -63,13 +63,13 @@ class MonthAdapter1(
         fun bind(date: Date) {
 
             monthdiv.setVisibility(View.GONE)
-            val dateFormat = SimpleDateFormat("dd")
+            val dateFormat = SimpleDateFormat("d")
             val dateFormat1 = SimpleDateFormat("E")
             val curr_date = dateFormat.format(date)
             val curr_date1 = dateFormat1.format(date)
             val month_data = curr_date.toString() + "/" + printmont
            
-            recycleView.adapter = adapter
+
 
             recycleView.layoutManager = LinearLayoutManager(itemView.context)
 //            recycleView.visibility=View.GONE
@@ -77,6 +77,8 @@ class MonthAdapter1(
 
             mUserViewModel.readTodat(month_data.toString())
                 .observe(itemView.context as LifecycleOwner, { year -> adapter.setData(year) })
+
+            recycleView.adapter = adapter
 
             mUserViewModel.monthdata(month_data, "Income")
                 .observe(itemView.context as LifecycleOwner,

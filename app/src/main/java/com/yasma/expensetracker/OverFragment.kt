@@ -57,9 +57,10 @@ class OverFragment : Fragment(),recycle_Interface {
         recycleView.layoutManager = layoytmanager
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
         var printmont:String= month.toString()+"/"+year.toString()
+
         val dates = getDatesForMonth(year, month-1) // a method to get a list of dates for the month
-        val monthAdapter = MonthAdapter1(dates, mUserViewModel,printmont,today,this)
-        recycleView.adapter = monthAdapter
+//        val monthAdapter = MonthAdapter1(dates, mUserViewModel,printmont,today,this)
+//        recycleView.adapter = monthAdapter
         return view
     }
     fun getDatesForMonth(year: Int, month: Int): List<Date> {
