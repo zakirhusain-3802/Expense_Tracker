@@ -23,7 +23,7 @@ import java.util.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-var sel_mont=""
+ private var sel_month=""
 
 /**
  * A simple [Fragment] subclass.
@@ -54,13 +54,16 @@ class input_data : DialogFragment() {
         val view: View = inflater.inflate(R.layout.fragment_input_data, container, false)
         dViewmodel = ViewModelProvider(this)[ViewModelData::class.java]
         val dat:TextView=view.findViewById(R.id.in_date)
-
-        val sdf = SimpleDateFormat("dd/M/yyyy")
+        var sel_mont=""
+        val sdf = SimpleDateFormat("d/M/yyyy")
         var currentDate = sdf.format(Date())
+
+        println(currentDate)
         var today=""
         val m=SimpleDateFormat("M/yyyy")
         val month=m.format(Date())
         val clos: Button = view.findViewById(R.id.button5)
+         clos.setText("ADD")
 
         dat.setText(currentDate.toString())
 
@@ -126,7 +129,18 @@ class input_data : DialogFragment() {
             }
             println(todaydate+"....")
             val try_date=todaydate
-            val deardata=yeardata(0,try_date,type,title,des, sel_mont, amount)
+
+
+
+
+            val delim="/"
+            var list=try_date.split(delim)
+            println(list+" checking")
+            var try_month= list[1].toString()+"/"+list[2].toString()
+            println(try_month + "Month and year")
+
+
+            val deardata=yeardata(0,try_date,type,title,des, try_month, amount)
             dViewmodel.addData(deardata)
             dismiss()
 //            val fragmentManager=parentFragmentManager
@@ -151,7 +165,7 @@ class input_data : DialogFragment() {
         val datePickerDialog = DatePickerDialog(context,
             { view, selectedYear, selectedMonth, selectedDayOfMonth ->
                  selectedDate = "$selectedDayOfMonth/${selectedMonth + 1}/$selectedYear"
-                sel_mont = "${selectedMonth + 1}/$selectedYear"
+                sel_month = "${selectedMonth + 1}/$selectedYear"
                 textView1.text = selectedDate
 
             },

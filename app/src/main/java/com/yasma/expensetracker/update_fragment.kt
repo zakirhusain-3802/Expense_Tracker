@@ -19,7 +19,7 @@ import java.util.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-var sel_mont1=""
+private  var sel_mont1=""
 
 /**
  * A simple [Fragment] subclass.
@@ -49,6 +49,7 @@ class update_fragment() : DialogFragment() {
         val dat:TextView=view.findViewById(R.id.up_date)
         val e: RadioButton = view.findViewById(R.id.up_radioButton)
         val i: RadioButton = view.findViewById(R.id.up_radioButton1)
+
         var currentdates: String
         val month: String
         val margs = arguments
@@ -68,6 +69,7 @@ class update_fragment() : DialogFragment() {
         }
 
         val up: Button = view.findViewById(R.id.up_button5)
+        up.setText("Update")
         up.setOnClickListener() {
             val margs = arguments
             if (margs != null) {
@@ -134,6 +136,9 @@ class update_fragment() : DialogFragment() {
                 type = "Income"
                 Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             }
+
+
+
             val updateUSER = yeardata(id, currentdate, type, title, des, sel_mont1, amount)
             duViewmodel.updateData(updateUSER)
             dismiss()

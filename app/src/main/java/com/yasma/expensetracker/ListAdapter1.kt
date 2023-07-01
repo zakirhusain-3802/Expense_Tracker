@@ -47,7 +47,7 @@ class ListAdapter1(private final var recycleInterface: recycle_Interface) :
             holder.itemView.textView51.text = currentItem.price.toString() + ".00"
         }
         holder.itemView.textView31.text = currentItem.title.toString()
-        holder.itemView.textView41.text = currentItem.d_date.toString()
+        holder.itemView.textView41.text = currentItem.description.toString()
 //        holder.itemView.textView5.text = currentItem.price.toString()
 
         holder.itemView.rowlayout1.setOnClickListener() {

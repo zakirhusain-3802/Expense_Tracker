@@ -108,7 +108,7 @@ class MonthFragment : Fragment(), recycle_Interface {
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
             starts(monthAdapter, recycleView, no_dta)
             month_name.text = year.toString()
-            println(year)
+//            println(year)
 //            cal[Calendar.MONTH] = getMonth_minus(month)-1
 //            val mon_name = month_date.format(cal.time)
 //            month_name.text = mon_name.toString()
@@ -129,7 +129,7 @@ class MonthFragment : Fragment(), recycle_Interface {
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
             starts(monthAdapter, recycleView, no_dta)
             month_name.text = year.toString()
-            println(year)
+//            println(year)
 
 //            cal[Calendar.MONTH] = getMonth_add(month)-1
 //            val mon_name = month_date.format(cal.time)

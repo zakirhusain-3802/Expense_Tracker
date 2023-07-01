@@ -67,7 +67,7 @@ class MonthAdapter(
             cal[Calendar.MONTH] = monthindex - 1
             val curr_date1 = dateFormat1.format(cal.time)
             val month_data = monthindex.toString() + printmont
-            println(month_data)
+//            println(month_data)
 
             month_div.setVisibility(View.GONE)
 

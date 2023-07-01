@@ -38,100 +38,39 @@ class OverFragment : Fragment(),recycle_Interface {
     ): View? {
         // Inflate the layout for this fragment
         val view:View=inflater.inflate(R.layout.fragment_over, container, false)
-        val y = SimpleDateFormat("yyyy")
-        var year = Integer.parseInt(y.format(Date()))
-        val d = SimpleDateFormat("dd")
-        var today = Integer.parseInt(d.format(Date()))
-
-        // getting Current Month
-        val m = SimpleDateFormat("M")
-        var month = Integer.parseInt(m.format(Date()))
 
 
 
 
-        val recycleView = view.over_recycle
-        val layoytmanager = LinearLayoutManager(requireContext())
-        layoytmanager.setReverseLayout(true)
-        layoytmanager.setStackFromEnd(true);
-        recycleView.layoutManager = layoytmanager
-        mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
-        var printmont:String= month.toString()+"/"+year.toString()
 
-        val dates = getDatesForMonth(year, month-1) // a method to get a list of dates for the month
-//        val monthAdapter = MonthAdapter1(dates, mUserViewModel,printmont,today,this)
-//        recycleView.adapter = monthAdapter
         return view
-    }
-    fun getDatesForMonth(year: Int, month: Int): List<Date> {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.YEAR, year)
-        calendar.set(Calendar.MONTH, month)
-        calendar.set(Calendar.DAY_OF_MONTH, 1)
-
-        val dates = mutableListOf<Date>()
-        while (calendar.get(Calendar.MONTH) == month) {
-            dates.add(calendar.time)
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-        }
-        println(dates)
-        return dates
-
-    }
-    fun update(position: yeardata) {
-        val args: Bundle = Bundle()
-        args.putString("title", position.title.toString())
-        args.putString("des", position.description.toString())
-        args.putString("amount", position.price.toString())
-        args.putString("type", position.type.toString())
-        args.putString("currentdate", position.d_date.toString())
-        args.putString("month", position.month.toString())
-        args.putInt("id", position.id)
-
-        val update = update_fragment()
-        update.setArguments(args)
-
-        update.show(childFragmentManager, "Heloo")
-
     }
 
     override fun onItemClick(currentItem: yeardata) {
-      Toast.makeText(context,"hello",Toast.LENGTH_SHORT).show()
-        update(currentItem)
+        TODO("Not yet implemented")
     }
 
     override fun deletitem(currentItem: yeardata) {
-        val dialogBuilder = AlertDialog.Builder(requireActivity())
-        dialogBuilder.setMessage("")
-            // if the dialog is cancelable
-            .setCancelable(false)
-            .setNegativeButton("Cancle", DialogInterface.OnClickListener{
-                    dialog, id ->
-                dialog.dismiss()
-            })
-            .setPositiveButton("Ok", DialogInterface.OnClickListener {
-                    dialog, id ->
-                mUserViewModel.deletData(currentItem)
-                dialog.dismiss()
-
-            })
-
-        val alert = dialogBuilder.create()
-        alert.setTitle("Do you want to Delete record ?")
-        alert.show()
-        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
+        TODO("Not yet implemented")
     }
 
-
     override fun monthdat(date: String) {
-        Toast.makeText(context,"Welcome ",Toast.LENGTH_SHORT).show()
+        TODO("Not yet implemented")
     }
 
     override fun nodata() {
-
+        TODO("Not yet implemented")
     }
 
+
 }
+
+
+
+
+
+
+
 
 
 

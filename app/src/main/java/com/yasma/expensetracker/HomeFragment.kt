@@ -194,7 +194,7 @@ class HomeFragment : Fragment(), recycle_Interface {
             val dateFormat1 = SimpleDateFormat("MMM")
             val curr_date1 = dateFormat1.format(cal.time)
             daily_month.text=curr_date1+" "+y1.toString()
-            println(curr_date1+" "+m1.toString())
+//            println(curr_date1+" "+m1.toString())
 
             val dates =
                 getDatesForMonth(y1, m1 - 1) // a method to get a list of dates for the month

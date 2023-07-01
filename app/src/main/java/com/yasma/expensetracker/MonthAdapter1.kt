@@ -68,7 +68,7 @@ class MonthAdapter1(
             val curr_date = dateFormat.format(date)
             val curr_date1 = dateFormat1.format(date)
             val month_data = curr_date.toString() + "/" + printmont
-           
+           println(month_data)
 
 
             recycleView.layoutManager = LinearLayoutManager(itemView.context)
