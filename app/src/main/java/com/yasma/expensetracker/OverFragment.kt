@@ -1,26 +1,28 @@
 package com.yasma.expensetracker
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.yasma.expensetracker.data.ViewModelData
+import com.yasma.expensetracker.data.yearRepositary
 import com.yasma.expensetracker.data.yeardata
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.fragment_over.view.*
-import java.text.SimpleDateFormat
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
+
+import java.text.SimpleDateFormat
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+var data= mutableListOf<Pair<String,Int>>()
 
 /**
  * A simple [Fragment] subclass.
@@ -32,6 +34,7 @@ class OverFragment : Fragment(),recycle_Interface {
     private lateinit var mUserViewModel: ViewModelData
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,11 +42,76 @@ class OverFragment : Fragment(),recycle_Interface {
         // Inflate the layout for this fragment
         val view:View=inflater.inflate(R.layout.fragment_over, container, false)
 
+        val y = SimpleDateFormat("yyyy")
+        var year = Integer.parseInt(y.format(Date()))
+        var y1=year
+        val d = SimpleDateFormat("dd")
+        var today = Integer.parseInt(d.format(Date()))
 
+        // getting Current Month
+        val m = SimpleDateFormat("M")
+        var month = Integer.parseInt(m.format(Date()))
+
+
+//        var pie = AnyChart.pie()
+//
+//        var data: MutableList<DataEntry> = ArrayList()
+//        data.add(ValueDataEntry("John", 10000))
+//        data.add(ValueDataEntry("Jake", 12000))
+//        data.add(ValueDataEntry("Peter", 18000))
+
+//        println(data+"  data")
+//
+//        var anyChartView = view.findViewById(R.id.any_chart_view) as AnyChartView
+//        pie.data(data)
+//        anyChartView.setChart(pie)
+
+         fristfun(year,month,view)
+//         printarray()
 
 
 
         return view
+
+    }
+    fun fristfun(year: Int, month: Int, view: View) {
+        mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
+
+        mUserViewModel.Month_expense_chart("7/2023").observe(viewLifecycleOwner,{data1->adddata(year,month-1,view,data) })
+
+    }
+
+    private fun adddata(year: Int, month: Int, view: View, data1: MutableList<Pair<String, Int>>) {
+
+      var dates= getDatesForMonth(year,month)
+        val s=dates.size
+
+
+
+        for(i in 0 until s step 1) {
+//            println(dates[i]+"  dd")
+            data.clear()
+            mUserViewModel.monthdata(dates[i], "Income")
+                .observe(viewLifecycleOwner, androidx.lifecycle.Observer { sum ->
+                    if (sum != null) {
+                        data.add(
+                            Pair(dates[i], sum)
+                        )
+                        println(sum.toString() + " ")
+                    }
+
+
+                })
+        }
+         mUserViewModel.monthdata("7","hrlo").observe(viewLifecycleOwner, androidx.lifecycle.Observer { printarray() })
+
+
+
+//        }
+
+
+
+
     }
 
     override fun onItemClick(currentItem: yeardata) {
@@ -60,6 +128,30 @@ class OverFragment : Fragment(),recycle_Interface {
 
     override fun nodata() {
         TODO("Not yet implemented")
+    }
+
+    fun getDatesForMonth(year: Int, month: Int): List<String> {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR, year)
+        calendar.set(Calendar.MONTH, month)
+        calendar.set(Calendar.DAY_OF_MONTH, 1)
+
+        val dateFormat = SimpleDateFormat("d/M/yyyy", Locale.getDefault())
+
+        val dates = mutableListOf<String>()
+        while (calendar.get(Calendar.MONTH) == month) {
+            val formattedDate = dateFormat.format(calendar.time)
+            dates.add(formattedDate)
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+
+        return dates
+
+    }
+
+    fun printarray()
+    {
+        println(data)
     }
 
 

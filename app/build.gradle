@@ -64,6 +64,9 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 
 
+    implementation 'com.github.AnyChart:AnyChart-Android:0.0.3'
+
+
 
 
 

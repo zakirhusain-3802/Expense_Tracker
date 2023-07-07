@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.anychart.anychart.DataEntry
 import com.yasma.expensetracker.HomeFragment
 
 import  kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.reflect.Array
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -76,5 +78,7 @@ class ViewModelData(application: Application) : AndroidViewModel(application) {
     fun sumod_expense(value: String) = repositary.sumof_Expense(value)
     fun sumod_income(value: String) = repositary.sumof_income(value)
 
-
+    fun Month_expense_chart(months: String):  LiveData<List<twodata>> {
+        return repositary.Month_expense_chart(months)
+    }
 }

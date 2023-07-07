@@ -22,3 +22,7 @@ data class yeardata(
     val price: Int
 
 ):Parcelable
+data class twodata (
+    val d_date: String,
+    val price:Int
+        )

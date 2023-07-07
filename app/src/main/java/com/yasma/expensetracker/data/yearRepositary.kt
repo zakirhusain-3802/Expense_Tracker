@@ -1,6 +1,7 @@
 package com.yasma.expensetracker.data
 
 import androidx.lifecycle.LiveData
+import java.util.*
 
 class yearRepositary(private val Year: year) {
     val readAlldata: LiveData<List<yeardata>> = Year.readDailyData()
@@ -20,6 +21,11 @@ class yearRepositary(private val Year: year) {
     fun todatData(today: String): LiveData<List<yeardata>> {
         return Year.todayData(today)
     }
+
+    fun Month_expense_chart(months: String):  LiveData<List<twodata>> {
+        return Year.Month_expense_chart(months)
+    }
+
 
     fun monthData(today: String, value: String): LiveData<Int> {
         return Year.monthdata(today, value)
