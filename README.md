@@ -1,4 +1,4 @@
-Sure! Here's the updated version of the README without points 6 and 7:
+
 
 # Expense Tracker - Android Application
 
