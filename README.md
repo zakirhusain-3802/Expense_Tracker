@@ -62,8 +62,5 @@ Upon launching the Expense Tracker application, follow these guidelines to utili
 
 For any issues, suggestions, or feedback regarding the Expense Tracker application, please contact zakirhussain3802@gmail.com We appreciate your valuable input and will strive to improve the application based on your feedback.
 
-## License
-
-The Expense Tracker application is released under the [MIT License](https://opensource.org/licenses/MIT). You are free to modify and distribute the application in accordance with the terms specified in the license.
 
 **Note:** This README is a template that provides a general structure and information for your Expense Tracker application. Feel free to customize it based on your application's specific features and requirements.
