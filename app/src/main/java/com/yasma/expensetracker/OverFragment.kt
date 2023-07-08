@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.yasma.expensetracker.data.ViewModelData
+import com.yasma.expensetracker.data.twodata
+import com.yasma.expensetracker.data.year
 import com.yasma.expensetracker.data.yeardata
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.fragment_over.view.*
@@ -29,6 +31,7 @@ private const val ARG_PARAM2 = "param2"
 class OverFragment : Fragment(),recycle_Interface {
     // TODO: Rename and change types of parameters
     private lateinit var mUserViewModel: ViewModelData
+    private lateinit var year: year
 
 
 
@@ -50,6 +53,7 @@ class OverFragment : Fragment(),recycle_Interface {
         var month = Integer.parseInt(m.format(Date()))
 
         var data= mutableListOf<Pair<String,Int>>()
+
 //        var pie = AnyChart.pie()
 //
 //        var data: MutableList<DataEntry> = ArrayList()
@@ -84,20 +88,23 @@ class OverFragment : Fragment(),recycle_Interface {
         val s=dates.size
 
 
-
+var d_arry= arrayOf<twodata>()
 
         for(i in 0 until s step 1) {
 //            println(dates[i]+"  dd")
 //            data.clear()
+
+
             mUserViewModel.Month_expense_chart(dates[i], "Income")
                 .observe(viewLifecycleOwner, androidx.lifecycle.Observer {d->
                     if (d.isNotEmpty() ){
 
-                    println(d)
+//                    println(d.first().price)
+                        d_arry+=twodata(d.first().d_date,d.first().price)
 
                 }})
         }
-         mUserViewModel.monthdata("7","hrlo").observe(viewLifecycleOwner, androidx.lifecycle.Observer { printarray() })
+         mUserViewModel.monthdata("7","hrlo").observe(viewLifecycleOwner, androidx.lifecycle.Observer { printarray(d_arry) })
 
 
 
@@ -143,9 +150,9 @@ class OverFragment : Fragment(),recycle_Interface {
 
     }
 
-    fun printarray()
+    fun printarray(d_arry: Array<twodata>)
     {
-//        println(data)
+        println(d_arry.size)
     }
 
 
