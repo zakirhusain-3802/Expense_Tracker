@@ -20,8 +20,8 @@ interface year {
     @Query("SElECT * FROM user_data ORDER BY id DESC")
     fun readDailyData(): LiveData<List<yeardata>>
 
-    @Query("SElECT id, d_date,price FROM user_data WHERE month=:months ORDER BY id")
-    fun Month_expense_chart(months:String):  LiveData<List<twodata>>
+    @Query("SElECT d_date,price FROM user_data WHERE d_date=:months AND type= :value ORDER BY id")
+    fun Month_expense_chart(months:String,value: String):  LiveData<List<twodata>>
 
     @Query("SELECT * FROM user_data WHERE d_date=:today ORDER BY id DESC")
     fun todayData(today:String): LiveData<List<yeardata>>

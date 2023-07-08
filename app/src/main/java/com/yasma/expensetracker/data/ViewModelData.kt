@@ -78,7 +78,7 @@ class ViewModelData(application: Application) : AndroidViewModel(application) {
     fun sumod_expense(value: String) = repositary.sumof_Expense(value)
     fun sumod_income(value: String) = repositary.sumof_income(value)
 
-    fun Month_expense_chart(months: String):  LiveData<List<twodata>> {
-        return repositary.Month_expense_chart(months)
+    fun Month_expense_chart(months: String,value: String):  LiveData<List<twodata>> {
+        return repositary.Month_expense_chart(months,value)
     }
 }

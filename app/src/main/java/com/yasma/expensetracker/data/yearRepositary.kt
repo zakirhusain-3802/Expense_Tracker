@@ -22,8 +22,8 @@ class yearRepositary(private val Year: year) {
         return Year.todayData(today)
     }
 
-    fun Month_expense_chart(months: String):  LiveData<List<twodata>> {
-        return Year.Month_expense_chart(months)
+    fun Month_expense_chart(months: String,value: String):  LiveData<List<twodata>> {
+        return Year.Month_expense_chart(months, value)
     }
 
 

@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.yasma.expensetracker.data.ViewModelData
-import com.yasma.expensetracker.data.yearRepositary
 import com.yasma.expensetracker.data.yeardata
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import kotlinx.android.synthetic.main.fragment_over.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.*
 
 import java.text.SimpleDateFormat
@@ -22,7 +19,7 @@ import java.text.SimpleDateFormat
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-var data= mutableListOf<Pair<String,Int>>()
+
 
 /**
  * A simple [Fragment] subclass.
@@ -52,7 +49,7 @@ class OverFragment : Fragment(),recycle_Interface {
         val m = SimpleDateFormat("M")
         var month = Integer.parseInt(m.format(Date()))
 
-
+        var data= mutableListOf<Pair<String,Int>>()
 //        var pie = AnyChart.pie()
 //
 //        var data: MutableList<DataEntry> = ArrayList()
@@ -66,7 +63,7 @@ class OverFragment : Fragment(),recycle_Interface {
 //        pie.data(data)
 //        anyChartView.setChart(pie)
 
-         fristfun(year,month,view)
+         fristfun(year,month,view,data)
 //         printarray()
 
 
@@ -74,10 +71,10 @@ class OverFragment : Fragment(),recycle_Interface {
         return view
 
     }
-    fun fristfun(year: Int, month: Int, view: View) {
+    fun fristfun(year: Int, month: Int, view: View, data: MutableList<Pair<String, Int>>) {
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
 
-        mUserViewModel.Month_expense_chart("7/2023").observe(viewLifecycleOwner,{data1->adddata(year,month-1,view,data) })
+        mUserViewModel.Month_expense_chart("7/2023","Income").observe(viewLifecycleOwner,{data1->adddata(year,month-1,view,data) })
 
     }
 
@@ -88,20 +85,17 @@ class OverFragment : Fragment(),recycle_Interface {
 
 
 
+
         for(i in 0 until s step 1) {
 //            println(dates[i]+"  dd")
-            data.clear()
-            mUserViewModel.monthdata(dates[i], "Income")
-                .observe(viewLifecycleOwner, androidx.lifecycle.Observer { sum ->
-                    if (sum != null) {
-                        data.add(
-                            Pair(dates[i], sum)
-                        )
-                        println(sum.toString() + " ")
-                    }
+//            data.clear()
+            mUserViewModel.Month_expense_chart(dates[i], "Income")
+                .observe(viewLifecycleOwner, androidx.lifecycle.Observer {d->
+                    if (d.isNotEmpty() ){
 
+                    println(d)
 
-                })
+                }})
         }
          mUserViewModel.monthdata("7","hrlo").observe(viewLifecycleOwner, androidx.lifecycle.Observer { printarray() })
 
@@ -151,7 +145,7 @@ class OverFragment : Fragment(),recycle_Interface {
 
     fun printarray()
     {
-        println(data)
+//        println(data)
     }
 
 
