@@ -168,14 +168,14 @@ class HomeFragment : Fragment(), recycle_Interface {
             mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
-            if(m1.toString()+"/"+y1.toString()==current_month)
-            {
-                fm1.setBackgroundResource(R.drawable.daliy_div)
-                daily_txt.setTextColor(R.color.black)}
-            else{
-                fm1.setBackgroundResource(R.drawable.div)
-                daily_txt.setTextColor(R.color.black)
-            }
+//            if(m1.toString()+"/"+y1.toString()==current_month)
+//            {
+//                fm1.setBackgroundResource(R.drawable.daliy_div)
+//                daily_txt.setTextColor(R.color.black)}
+//            else{
+//                fm1.setBackgroundResource(R.drawable.div)
+//                daily_txt.setTextColor(R.color.black)
+//            }
         }
         val ch_for:ImageView=view.findViewById(R.id.ch_month_forward)
         ch_for.setOnClickListener(){
@@ -208,14 +208,14 @@ class HomeFragment : Fragment(), recycle_Interface {
             mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
-            if(m1.toString()+"/"+y1.toString()==current_month)
-            {
-            fm1.setBackgroundResource(R.drawable.daliy_div)
-            daily_txt.setTextColor(R.color.golds)}
-            else{
-                fm1.setBackgroundResource(R.drawable.div)
-                daily_txt.setTextColor(R.color.black)
-            }
+//            if(m1.toString()+"/"+y1.toString()==current_month)
+//            {
+//            fm1.setBackgroundResource(R.drawable.daliy_div)
+//            daily_txt.setTextColor(R.color.golds)}
+//            else{
+//                fm1.setBackgroundResource(R.drawable.div)
+//                daily_txt.setTextColor(R.color.black)
+//            }
 
         }
          daily_month.setOnClickListener(){

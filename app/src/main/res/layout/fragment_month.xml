@@ -12,52 +12,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingBottom="145dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.029" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04">
+        app:layout_constraintVertical_bias="0.059">
 
         <Button
             android:id="@+id/arr_back"
             android:layout_width="25dp"
             android:layout_height="20dp"
-            android:gravity="center"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:background="@drawable/ic_baseline_arrow_back_ios_24" />
 
         <TextView
             android:id="@+id/month_name"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10sp"
-android:textColor="#1C1C1C"
-            android:text="Month Name"
-            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:text="20200"
+            android:textColor="#1C1C1C"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/arr_up"
             android:layout_width="25dp"
             android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
             android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
-    </LinearLayout>
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/no_data"
@@ -71,5 +74,21 @@ android:textColor="#1C1C1C"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.302" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Yearly Overview"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/month_recycle"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

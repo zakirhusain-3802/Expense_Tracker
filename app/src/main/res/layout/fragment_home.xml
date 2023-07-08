@@ -182,7 +182,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:cardCornerRadius="50dp"
-        android:background="@drawable/ic_baseline_add_24"
+
+        android:background="@color/golds"
         android:layout_marginBottom="60dp"
         android:layout_marginLeft="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -197,7 +198,7 @@
             android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/div"
+            android:background="@color/golds"
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
