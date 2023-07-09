@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
 import android.widget.DatePicker
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 
@@ -41,6 +43,7 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment(), recycle_Interface {
 
     private lateinit var mUserViewModel: ViewModelData
+    private lateinit var firebaseAuth: FirebaseAuth
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -49,8 +52,16 @@ class HomeFragment : Fragment(), recycle_Interface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        firebaseAuth=FirebaseAuth.getInstance()
+        val log_out=view.findViewById<TextView>(R.id.log_out)
+        log_out.setOnClickListener(){
+            firebaseAuth.signOut()
+            val intent = Intent(context,Login_Activity::class.java)
+            startActivity(intent)
+        }
 //        var currentMonth:TextView=view.findViewById(R.id.currentmont)
         val daily_month:TextView=view.findViewById(R.id.daily_month)
         val daily_txt:TextView=view.findViewById(R.id.daily_txt)
