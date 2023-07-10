@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
 
     <item android:title="Home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:id="@+id/home"/>
+        android:id="@+id/home"
+        />
     <item android:title="Monthly"
         android:id="@+id/month"
-        android:icon="@drawable/ic_outline_assignment_24"/>
+        android:icon="@drawable/ic_outline_assignment_24"
+        android:background="@color/bg_re"/>
     <item android:title="OverView"
         android:icon="@drawable/ic_sharp_addchart_24"
-        android:id="@+id/over"/>
+        android:id="@+id/over"
+    android:background="@color/bg_re">
+
+    </item>
 </menu>

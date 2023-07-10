@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/bg_re"
 
 
     android:orientation="vertical"
@@ -15,13 +16,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/month_name"
         android:layout_marginBottom="10dp"
-        android:elevation="2dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#00232323" />
+
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -109,6 +107,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D6D6D6"
+                android:layout_gravity="bottom"></View>
+
         </FrameLayout>
 
 
@@ -116,8 +120,15 @@
             android:id="@+id/chilrecyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/bg_re"
 
             />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#AAAAAA"
+            android:layout_gravity="bottom"></View>
+
 
     </LinearLayout>
 

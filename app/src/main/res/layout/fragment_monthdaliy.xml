@@ -126,8 +126,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/daliy_m_recle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="150dp"
+        android:layout_height="900dp"
+        android:paddingBottom="0dp"
+        android:background="@color/bg_re"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

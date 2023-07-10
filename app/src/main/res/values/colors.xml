@@ -8,5 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="status">#429690</color>
-    <color name="golds">#702963</color>
+<!--    <color name="golds">#702963</color>-->
+    <color name="golds">#DF2E38</color>
+    <color name="bg_re">#F9FAF9</color>
+
+
 </resources>

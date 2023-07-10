@@ -22,7 +22,7 @@ class ListAdapter(private final var recycleInterface: recycle_Interface) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolde {
 
         return MyViewHolde(
-            LayoutInflater.from(parent.context).inflate(R.layout.exp_div, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.exp_div1, parent, false)
         )
     }
 
