@@ -1,12 +1,13 @@
 package com.yasma.expensetracker
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class Login_Activity : AppCompatActivity() {
@@ -18,6 +19,10 @@ class Login_Activity : AppCompatActivity() {
         firebaseAuth=FirebaseAuth.getInstance()
 
         val sin_up=findViewById<TextView>(R.id.sign_up)
+        val name = getColoredSpanned("Not Registered Yet,", "#111111")
+        val surName = getColoredSpanned("Sign Up !", "#702963")
+        sin_up.setText(Html.fromHtml(name+"<b>"+surName+"</b>"))
+
         sin_up.setOnClickListener(){
             val intent = Intent(this, SignUp_Activity::class.java)
             startActivity(intent)
@@ -60,5 +65,8 @@ class Login_Activity : AppCompatActivity() {
         }
 
 
+    }
+    private fun getColoredSpanned(text: String, color: String): String? {
+        return "<font color=$color>$text</font>"
     }
 }

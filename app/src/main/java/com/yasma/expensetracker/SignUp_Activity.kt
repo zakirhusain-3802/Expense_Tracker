@@ -3,6 +3,7 @@ package com.yasma.expensetracker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -21,6 +22,10 @@ class SignUp_Activity : AppCompatActivity() {
         firebaseAuth=FirebaseAuth.getInstance()
 
         val login=findViewById<TextView>(R.id.loin_in)
+        val name = getColoredSpanned("Already Registered,", "#111111")
+        val surName = getColoredSpanned("Sign In !", "#702963")
+        login.setText(Html.fromHtml(name+"<b>"+surName+"</b>"))
+
 
         login.setOnClickListener(){
             val intent = Intent(this, Login_Activity::class.java)
@@ -64,5 +69,8 @@ class SignUp_Activity : AppCompatActivity() {
 //            val intent=Intent(this,MainActivity::class.java)
 //            startActivity(intent)
         }
+    }
+    private fun getColoredSpanned(text: String, color: String): String? {
+        return "<font color=$color>$text</font>"
     }
 }
