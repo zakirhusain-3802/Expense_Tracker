@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
+    android:background="#FFF7F7"
     >
 
 
@@ -142,7 +143,6 @@
         android:id="@+id/frameLayout3"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:background="@drawable/daliy_div"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
@@ -155,16 +155,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Daily Transactions"
-            android:textColor="@color/black"
+            android:gravity="center"
+            android:background="@drawable/daliy_div"
+
+            android:text="Daily"
+            android:textColor="#FF9800"
+android:padding="5dp"
             android:textSize="15sp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="0dp"
             android:textStyle="bold" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#838383"
-            android:layout_gravity="bottom"></View>
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="2dp"-->
+<!--            android:background="#838383"-->
+<!--            android:layout_gravity="bottom"></View>-->
 
 
     </FrameLayout>
@@ -174,7 +178,7 @@
         android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         android:paddingRight="15dp"
         android:background="@color/bg_re"
         android:paddingBottom="380dp"
@@ -269,6 +273,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.314" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

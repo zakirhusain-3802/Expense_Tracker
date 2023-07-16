@@ -20,7 +20,7 @@ class Login_Activity : AppCompatActivity() {
 
         val sin_up=findViewById<TextView>(R.id.sign_up)
         val name = getColoredSpanned("Not Registered Yet,", "#111111")
-        val surName = getColoredSpanned("Sign Up !", "#702963")
+        val surName = getColoredSpanned("Sign Up !", "#DF2E38")
         sin_up.setText(Html.fromHtml(name+"<b>"+surName+"</b>"))
 
         sin_up.setOnClickListener(){

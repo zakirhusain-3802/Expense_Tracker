@@ -12,7 +12,7 @@
         android:layout_height="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/loginimg1" />
+        app:srcCompat="@drawable/loginimg3" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailLayout"

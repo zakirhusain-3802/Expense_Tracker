@@ -5,10 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp_Activity">
+
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        app:srcCompat="@drawable/loginimg1" />
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/signup1" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameLayout"
+        style="@style/LoginTextInputOuterFieldStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+
+        android:layout_marginTop="300dp"
+        app:boxStrokeColor="@color/golds"
+        app:hintTextColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameEt"
+            style="@style/LoginTextInputInnerFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your Name"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailLayout"
@@ -16,12 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/golds"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEt"
@@ -38,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/golds"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/golds"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordLayout"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.348" />
 
     <TextView
         android:id="@+id/loin_in"
@@ -111,7 +140,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="88dp"
         android:text="Sign Up"
         android:textColor="@color/golds"
         android:textSize="30sp"

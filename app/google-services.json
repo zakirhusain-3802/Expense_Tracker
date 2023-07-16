@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "707336397280",
+    "firebase_url": "https://expense-tracker-7f902-default-rtdb.firebaseio.com",
     "project_id": "expense-tracker-7f902",
     "storage_bucket": "expense-tracker-7f902.appspot.com"
   },

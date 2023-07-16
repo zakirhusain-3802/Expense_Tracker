@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
 import android.widget.DatePicker
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 
@@ -57,6 +58,9 @@ class HomeFragment : Fragment(), recycle_Interface {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         firebaseAuth=FirebaseAuth.getInstance()
         val log_out=view.findViewById<TextView>(R.id.log_out)
+        if(firebaseAuth.currentUser!=null){
+//            log_out.setText(FirebaseDatabase.getInstance().getReference("Users").child(g)
+        }
         log_out.setOnClickListener(){
             firebaseAuth.signOut()
             val intent = Intent(context,Login_Activity::class.java)
