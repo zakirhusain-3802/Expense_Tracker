@@ -262,18 +262,34 @@ android:padding="5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
 
+
     <TextView
-        android:id="@+id/log_out"
+        android:id="@+id/helo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log_out"
+        android:text="Welcome, "
+        android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.122" />
 
+    <TextView
+        android:id="@+id/log_out"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FF9800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/helo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.122" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
