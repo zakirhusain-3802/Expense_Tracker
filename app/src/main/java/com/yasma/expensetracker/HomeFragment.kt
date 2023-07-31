@@ -26,9 +26,12 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
 import android.widget.DatePicker
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import java.util.*
-
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -56,20 +59,60 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-        firebaseAuth=FirebaseAuth.getInstance()
-        val log_out=view.findViewById<TextView>(R.id.log_out)
-        if(firebaseAuth.currentUser!=null){
-//            log_out.setText(FirebaseDatabase.getInstance().getReference("Users").child(g)
-        }
-        log_out.setOnClickListener(){
+        firebaseAuth = FirebaseAuth.getInstance()
+        val log_out = view.findViewById<TextView>(R.id.log_out)
+
+        val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+        val currentUserUid = firebaseAuth.currentUser!!.uid
+
+// Method 1: Read data once using addListenerForSingleValueEvent
+        usersRef.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Data exists, you can access it using snapshot.value
+                    val userData =
+                        snapshot.value
+                log_out.text=userData.toString()
+                // This will be of type `Any?` and will contain your user data
+                    // Do something with the data
+                    // For example, if your user data is a map, you can cast it as follows:
+                    // val userMap = userData as? Map<String, Any>
+                } else {
+                    // Data doesn't exist for the current user
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+//        if(firebaseAuth.currentUser!=null){
+//            val databaseReference=FirebaseDatabase.getInstance().getReference("Users")
+////            databaseReference.child(firebaseAuth.uid.toString()).addValueEventListener(object : ValueEventListener{
+////                override fun onDataChange(snapshot: DataSnapshot) {
+////
+//////                    val username=snapshot.getValue()
+//////                    log_out.text=username.toString()
+////                    TODO("Not yet implemented")
+////                }
+////
+////                override fun onCancelled(error: DatabaseError) {
+////                    TODO("Not yet implemented")
+////                }
+////
+////            })
+////            log_out.setText(FirebaseDatabase.getInstance().getReference("Users").child(g)
+//        }
+
+                log_out . setOnClickListener (){
             firebaseAuth.signOut()
-            val intent = Intent(context,Login_Activity::class.java)
+            val intent = Intent(context, Login_Activity::class.java)
             startActivity(intent)
         }
 //        var currentMonth:TextView=view.findViewById(R.id.currentmont)
-        val daily_month:TextView=view.findViewById(R.id.daily_month)
-        val daily_txt:TextView=view.findViewById(R.id.daily_txt)
-        val fm1:FrameLayout=view.findViewById(R.id.frameLayout3)
+            val daily_month : TextView = view . findViewById (R.id.daily_month)
+        val daily_txt: TextView = view.findViewById(R.id.daily_txt)
+        val fm1: FrameLayout = view.findViewById(R.id.frameLayout3)
         val cal = Calendar.getInstance()
 
 
@@ -80,22 +123,22 @@ class HomeFragment : Fragment(), recycle_Interface {
         ///
         val y = SimpleDateFormat("yyyy")
         var year = Integer.parseInt(y.format(Date()))
-        var y1=year
+        var y1 = year
         val d = SimpleDateFormat("dd")
         var today = Integer.parseInt(d.format(Date()))
 
         // getting Current Month
         val m = SimpleDateFormat("M")
         var month = Integer.parseInt(m.format(Date()))
-        var m1=month
+        var m1 = month
 
         val m_title = SimpleDateFormat("MMM")
 
-        daily_month.text=currentDate.toString()+" "+year.toString()
+        daily_month.text = currentDate.toString() + " " + year.toString()
 
-        cal[Calendar.MONTH] = month-1
-        var mon_title =m_title.format(cal.time)
-        val current_month=month.toString()+"/"+year.toString()
+        cal[Calendar.MONTH] = month - 1
+        var mon_title = m_title.format(cal.time)
+        val current_month = month.toString() + "/" + year.toString()
 
 //        currentMonth.text=mon_title.toString()+" "+year.toString()
         ///
@@ -127,13 +170,12 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
 
-        mUserViewModel.yeardata(current_month,"Expense")
+        mUserViewModel.yeardata(current_month, "Expense")
             .observe(viewLifecycleOwner, Observer { sum -> print_exp(sum.toString()) })
 
 
-        mUserViewModel.yeardata(current_month,"Income")
+        mUserViewModel.yeardata(current_month, "Income")
             .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
-
 
 
         val b: ImageButton = view.findViewById(R.id.imageButton)
@@ -151,36 +193,40 @@ class HomeFragment : Fragment(), recycle_Interface {
 //            ft.commit()
         }
 
-        val ch_back:ImageView=view.findViewById(R.id.ch_month_backward)
-        ch_back.setOnClickListener(){
+        val ch_back: ImageView = view.findViewById(R.id.ch_month_backward)
+        ch_back.setOnClickListener() {
             val cal = Calendar.getInstance()
-            if(m1>1)
-            {
-                m1=m1-1
-            }
-            else{
-                m1=12
-                y1=y1-1
+            if (m1 > 1) {
+                m1 = m1 - 1
+            } else {
+                m1 = 12
+                y1 = y1 - 1
             }
 
 
-            cal[Calendar.MONTH]=m1-1
+            cal[Calendar.MONTH] = m1 - 1
             val dateFormat1 = SimpleDateFormat("MMM")
             val curr_date1 = dateFormat1.format(cal.time)
-            daily_month.text=curr_date1+" "+y1.toString()
-            println(curr_date1+" "+m1.toString())
+            daily_month.text = curr_date1 + " " + y1.toString()
+            println(curr_date1 + " " + m1.toString())
 
 
             val dates =
                 getDatesForMonth(y1, m1 - 1) // a method to get a list of dates for the month
-            var monthAdapter = MonthAdapter1(dates, mUserViewModel, (m1.toString()+"/"+y1.toString()), today, this)
+            var monthAdapter = MonthAdapter1(
+                dates,
+                mUserViewModel,
+                (m1.toString() + "/" + y1.toString()),
+                today,
+                this
+            )
             recycleView.adapter = monthAdapter
 
-            mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Expense")
+            mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Expense")
                 .observe(viewLifecycleOwner, Observer { sum -> print_exp(sum.toString()) })
 
 
-            mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Income")
+            mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
 //            if(m1.toString()+"/"+y1.toString()==current_month)
@@ -192,35 +238,39 @@ class HomeFragment : Fragment(), recycle_Interface {
 //                daily_txt.setTextColor(R.color.black)
 //            }
         }
-        val ch_for:ImageView=view.findViewById(R.id.ch_month_forward)
-        ch_for.setOnClickListener(){
+        val ch_for: ImageView = view.findViewById(R.id.ch_month_forward)
+        ch_for.setOnClickListener() {
             val cal = Calendar.getInstance()
-            if(m1<12)
-            {
-                m1=m1+1
-            }
-            else{
-                m1=1
-                y1=y1+1
+            if (m1 < 12) {
+                m1 = m1 + 1
+            } else {
+                m1 = 1
+                y1 = y1 + 1
             }
 
 
-            cal[Calendar.MONTH]=m1-1
+            cal[Calendar.MONTH] = m1 - 1
             val dateFormat1 = SimpleDateFormat("MMM")
             val curr_date1 = dateFormat1.format(cal.time)
-            daily_month.text=curr_date1+" "+y1.toString()
+            daily_month.text = curr_date1 + " " + y1.toString()
 //            println(curr_date1+" "+m1.toString())
 
             val dates =
                 getDatesForMonth(y1, m1 - 1) // a method to get a list of dates for the month
-            var monthAdapter = MonthAdapter1(dates, mUserViewModel, (m1.toString()+"/"+y1.toString()), today, this)
+            var monthAdapter = MonthAdapter1(
+                dates,
+                mUserViewModel,
+                (m1.toString() + "/" + y1.toString()),
+                today,
+                this
+            )
             recycleView.adapter = monthAdapter
 
-            mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Expense")
+            mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Expense")
                 .observe(viewLifecycleOwner, Observer { sum -> print_exp(sum.toString()) })
 
 
-            mUserViewModel.yeardata(m1.toString()+"/"+y1.toString(),"Income")
+            mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
 //            if(m1.toString()+"/"+y1.toString()==current_month)
@@ -233,14 +283,14 @@ class HomeFragment : Fragment(), recycle_Interface {
 //            }
 
         }
-         daily_month.setOnClickListener(){
+        daily_month.setOnClickListener() {
 
 //             val calender=Calendar.getInstance()
 //
 //             context?.let { it1 -> DatePickerDialog(it1
 //             ).show() }
 
-         }
+        }
 
         return view
 
@@ -324,17 +374,15 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     override fun deletitem(currentItem: yeardata) {
 
-       // mUserViewModel.deletData(currentItem)
+        // mUserViewModel.deletData(currentItem)
         val dialogBuilder = AlertDialog.Builder(requireActivity())
         dialogBuilder.setMessage("")
             // if the dialog is cancelable
             .setCancelable(false)
-            .setNegativeButton("Cancle",DialogInterface.OnClickListener{
-                    dialog, id ->
+            .setNegativeButton("Cancle", DialogInterface.OnClickListener { dialog, id ->
                 dialog.dismiss()
             })
-            .setPositiveButton("Ok", DialogInterface.OnClickListener {
-                    dialog, id ->
+            .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
                 mUserViewModel.deletData(currentItem)
                 dialog.dismiss()
 
@@ -368,9 +416,6 @@ class HomeFragment : Fragment(), recycle_Interface {
         return dates
 
     }
-
-
-
 
 
 }
