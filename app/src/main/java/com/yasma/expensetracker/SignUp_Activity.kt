@@ -9,8 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+import androidx.core.view.isVisible
+import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
 class SignUp_Activity : AppCompatActivity() {
@@ -46,9 +48,14 @@ class SignUp_Activity : AppCompatActivity() {
             val conpas=conpass.text.toString()
 
             if(em.isNotEmpty() && pas.isNotEmpty() && conpas.isNotEmpty() && un.isNotEmpty()){
-                if (pas==conpas){
+                if (isEmailValid(em.trim().toString())) {
+                    // Email is valid, proceed with further actions
 
-                    firebaseAuth.createUserWithEmailAndPassword(em,pas).addOnCompleteListener{
+                if (pas==conpas){
+                    val errormsg=findViewById<TextView>(R.id.error_msg)
+
+
+                    firebaseAuth.createUserWithEmailAndPassword(em.trim(),pas).addOnCompleteListener{
                         if (it.isSuccessful) {
 
 
@@ -70,16 +77,51 @@ class SignUp_Activity : AppCompatActivity() {
 //                            val intent = Intent(this, Login_Activity::class.java)
 //                            startActivity(intent)
                         } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
+                            val exception = it.exception
+                            println(exception.toString())
+
+                            when (exception) {
+                                is FirebaseAuthUserCollisionException-> {
+                                    // Invalid user (user doesn't exist)
+
+                                    errormsg.text = " Already user exists, Please Login ..!"
+                                    errormsg.isVisible=true
+
+                                }
+                                is FirebaseAuthInvalidCredentialsException -> {
+                                    // Invalid credentials (wrong email or password)
+                                    errormsg.text = "Incorrect Email or Password"
+                                }
+
+                                else -> {
+                                    // Other authentication exceptions
+                                    Toast.makeText(
+                                        this,
+                                        "Please check internet connectivity",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+//                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                 }else{
-                    Toast.makeText(this,"Password is Not Matching",Toast.LENGTH_SHORT).show()
+                    error_msg.isVisible=true
+                    error_msg.text="Password not matching "
+//                    Toast.makeText(this,"Password is Not Matching",Toast.LENGTH_SHORT).show()
+                }
+                } else {
+                    // Invalid email, show an error message or handle it appropriately
+                    val errormsg=findViewById<TextView>(R.id.error_msg)
+                    errormsg.isVisible=true
+                    errormsg.text = "Invalid email address"
                 }
             }else{
-                Toast.makeText(this,"Empty field not Allowed",Toast.LENGTH_SHORT).show()
+                error_msg.isVisible=true
+                error_msg.text="Empty field not allowed"
+//                Toast.makeText(this,"Empty field not Allowed",Toast.LENGTH_SHORT).show()
             }
 
 
@@ -92,4 +134,9 @@ class SignUp_Activity : AppCompatActivity() {
     private fun getColoredSpanned(text: String, color: String): String? {
         return "<font color=$color>$text</font>"
     }
+    fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+        return emailRegex.matches(email)
+    }
+
 }
