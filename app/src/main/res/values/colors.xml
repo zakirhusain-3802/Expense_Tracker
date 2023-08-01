@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="status">#429690</color>
 <!--    <color name="golds">#702963</color>-->
-    <color name="golds">#DF2E38</color>
+<!--    android:background="#FFF7F7"-->
+    <color name="golds">#3762a9</color>
     <color name="bg_re">#F9FAF9</color>
-    <color name="act">#FFF7F7</color>
+    <color name="act">#F6F9FF</color>
+    <color name="red">#DF2E38</color>
 
 
 </resources>

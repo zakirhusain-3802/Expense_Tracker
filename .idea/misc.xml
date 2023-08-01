@@ -9,6 +9,8 @@
         <entry key="..\:/Expensetracker/app/src/main/res/drawable-hdpi/rupee3.xml" value="0.162" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable-v24/month_name.xml" value="0.117" />
+        <entry key="..\:/Expensetracker/app/src/main/res/drawable/arrow_back.xml" value="0.198" />
+        <entry key="..\:/Expensetracker/app/src/main/res/drawable/arrow_for.xml" value="0.198" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/cir.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/cir1.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/daliy_div.xml" value="0.2025" />
@@ -38,7 +40,7 @@
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_selector_exp.xml" value="0.1795" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_textcolor.xml" value="0.1" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_textcolor_exp.xml" value="0.1795" />
-        <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_main.xml" value="0.21851851851851853" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/daily_data.xml" value="0.5" />
