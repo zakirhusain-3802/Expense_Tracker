@@ -8,7 +8,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class Login_Activity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
@@ -43,13 +47,49 @@ class Login_Activity : AppCompatActivity() {
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                         } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+
+                            val errormsg=findViewById<TextView>(R.id.error_msg)
+
+                            errormsg.isVisible=true
+                            val exception = it.exception
+
+                            when (exception) {
+                                is FirebaseAuthInvalidUserException -> {
+                                    // Invalid user (user doesn't exist)
+                                    errormsg.text="User not exists, Please Signup ..!"
+
+                                }
+                                is FirebaseAuthInvalidCredentialsException -> {
+                                    // Invalid credentials (wrong email or password)
+                                    errormsg.text="Incorrect Email or Password"
+                                }
+
+                                else -> {
+                                    // Other authentication exceptions
+                                    Toast.makeText(this, "Please check internet connectivity", Toast.LENGTH_SHORT).show()
+                                }
+
+
+
+                            }
+
+
+
+
+
+
+
+
+//                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 
                         }
                     }
 
                 } else{
-                Toast.makeText(this,"Empty field not Allowed", Toast.LENGTH_SHORT).show()
+                    val errormsg=findViewById<TextView>(R.id.error_msg)
+                     errormsg.text="Empty field not allowed"
+                     errormsg.isVisible=true
+
             }
 
         }

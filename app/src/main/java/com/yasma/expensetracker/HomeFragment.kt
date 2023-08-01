@@ -73,12 +73,9 @@ class HomeFragment : Fragment(), recycle_Interface {
                     val userData =
                         snapshot.value
                 log_out.text=userData.toString()
-                // This will be of type `Any?` and will contain your user data
-                    // Do something with the data
-                    // For example, if your user data is a map, you can cast it as follows:
-                    // val userMap = userData as? Map<String, Any>
+
                 } else {
-                    // Data doesn't exist for the current user
+
                 }
             }
 
@@ -86,23 +83,6 @@ class HomeFragment : Fragment(), recycle_Interface {
                 TODO("Not yet implemented")
             }
         })
-//        if(firebaseAuth.currentUser!=null){
-//            val databaseReference=FirebaseDatabase.getInstance().getReference("Users")
-////            databaseReference.child(firebaseAuth.uid.toString()).addValueEventListener(object : ValueEventListener{
-////                override fun onDataChange(snapshot: DataSnapshot) {
-////
-//////                    val username=snapshot.getValue()
-//////                    log_out.text=username.toString()
-////                    TODO("Not yet implemented")
-////                }
-////
-////                override fun onCancelled(error: DatabaseError) {
-////                    TODO("Not yet implemented")
-////                }
-////
-////            })
-////            log_out.setText(FirebaseDatabase.getInstance().getReference("Users").child(g)
-//        }
 
                 log_out . setOnClickListener (){
             firebaseAuth.signOut()
@@ -229,14 +209,6 @@ class HomeFragment : Fragment(), recycle_Interface {
             mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
-//            if(m1.toString()+"/"+y1.toString()==current_month)
-//            {
-//                fm1.setBackgroundResource(R.drawable.daliy_div)
-//                daily_txt.setTextColor(R.color.black)}
-//            else{
-//                fm1.setBackgroundResource(R.drawable.div)
-//                daily_txt.setTextColor(R.color.black)
-//            }
         }
         val ch_for: ImageView = view.findViewById(R.id.ch_month_forward)
         ch_for.setOnClickListener() {
@@ -273,22 +245,9 @@ class HomeFragment : Fragment(), recycle_Interface {
             mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
-//            if(m1.toString()+"/"+y1.toString()==current_month)
-//            {
-//            fm1.setBackgroundResource(R.drawable.daliy_div)
-//            daily_txt.setTextColor(R.color.golds)}
-//            else{
-//                fm1.setBackgroundResource(R.drawable.div)
-//                daily_txt.setTextColor(R.color.black)
-//            }
 
         }
         daily_month.setOnClickListener() {
-
-//             val calender=Calendar.getInstance()
-//
-//             context?.let { it1 -> DatePickerDialog(it1
-//             ).show() }
 
         }
 

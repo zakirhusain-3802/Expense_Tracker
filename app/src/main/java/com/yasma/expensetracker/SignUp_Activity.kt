@@ -63,7 +63,6 @@ class SignUp_Activity : AppCompatActivity() {
                                 else
                                 {
                                     Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
-
                                 }
                             }
 //                            firebaseAuth.signOut()
