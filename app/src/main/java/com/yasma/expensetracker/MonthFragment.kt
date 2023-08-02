@@ -21,9 +21,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yasma.expensetracker.data.ViewModelData
+import com.yasma.expensetracker.data.year
 import com.yasma.expensetracker.data.yeardata
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_month.*
+import kotlinx.android.synthetic.main.fragment_month.nodata
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import java.text.SimpleDateFormat
 import java.time.Month
@@ -56,7 +59,6 @@ class MonthFragment : Fragment(), recycle_Interface {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_month, container, false)
         val month_name: TextView = view.findViewById(R.id.month_name)
-        val no_dta: ImageView = view.findViewById(R.id.no_data)
 
         var nodta: Boolean = false
         //getting current year
@@ -97,7 +99,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         val dates =
             getDatesForMonth(year, month - 1) // a method to get a list of dates for the month
         val monthAdapter = MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-        starts(monthAdapter, recycleView, year)
+        starts(monthAdapter, recycleView)
 
         //recycleView.adapter = monthAdapter
 
@@ -107,17 +109,8 @@ class MonthFragment : Fragment(), recycle_Interface {
             printmont = "/" + year.toString()
             val monthAdapter =
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-            starts(monthAdapter, recycleView, year)
+            starts(monthAdapter, recycleView)
             month_name.text = year.toString()
-//            println(year)
-//            cal[Calendar.MONTH] = getMonth_minus(month)-1
-//            val mon_name = month_date.format(cal.time)
-//            month_name.text = mon_name.toString()
-//            month = getMonth_minus(month)
-//            printmont= month.toString()+"/"+year.toString()
-//            val dates = getDatesForMonth(year, month-1) // a method to get a list of dates for the month
-//            val monthAdapter = MonthAdapter(dates, mUserViewModel,printmont,this)
-//            recycleView.adapter = monthAdapter
 
 
         }
@@ -128,37 +121,19 @@ class MonthFragment : Fragment(), recycle_Interface {
             printmont = "/" + year.toString()
             val monthAdapter =
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-            starts(monthAdapter, recycleView, year)
+            starts(monthAdapter, recycleView)
             month_name.text = year.toString()
-//            println(year)
-
-//            cal[Calendar.MONTH] = getMonth_add(month)-1
-//            val mon_name = month_date.format(cal.time)
-//            month_name.text = mon_name.toString()
-//            month = getMonth_add(month)
-//
-//            printmont= month.toString()+"/"+year.toString()
-//            val dates = getDatesForMonth(year, month-1) // a method to get a list of dates for the month
-//            val monthAdapter = MonthAdapter(dates, mUserViewModel,printmont,this)
-//            recycleView.adapter = monthAdapter
 
         }
         return view
 
     }
 
-    private fun starts(monthAdapter: MonthAdapter, recycleView: RecyclerView?, no_dta: Int) {
+    private fun starts(monthAdapter: MonthAdapter, recycleView: RecyclerView?) {
         recycleView?.adapter = monthAdapter
-        val data_is=mUserViewModel.checkdta(no_dta.toString())!!
-        println(data_is.toString() +" nodat")
-//        if (data_is.equals(0)){
-//            no_dta.isVisible=true
-//        }
-
-
-
 
     }
+
 
     private fun printtoast(toString: String) {
 
@@ -237,7 +212,10 @@ class MonthFragment : Fragment(), recycle_Interface {
         val ft = fragmentManager.beginTransaction()
         val newFragment = monthdaliy()
         newFragment.setArguments(args)
-        ft.setCustomAnimations(androidx.appcompat.R.anim.abc_fade_in, androidx.appcompat.R.anim.abc_fade_out)
+        ft.setCustomAnimations(
+            androidx.appcompat.R.anim.abc_fade_in,
+            androidx.appcompat.R.anim.abc_fade_out
+        )
         ft.replace(R.id.newfragmnet, newFragment)
         ft.addToBackStack(null)
         ft.commit()
@@ -246,13 +224,8 @@ class MonthFragment : Fragment(), recycle_Interface {
 
     override fun nodata() {
         i = i + 1
-//        if (i == 12) {
-//            no_data.setVisibility(View.VISIBLE)
-//        }
-//        else{
-//            no_data.setVisibility(View.GONE)
-//        }
-
+        println(i)
+        checknodta()
     }
 
     override fun deletitem(currentItem: yeardata) {
@@ -260,12 +233,10 @@ class MonthFragment : Fragment(), recycle_Interface {
         dialogBuilder.setMessage("")
             // if the dialog is cancelable
             .setCancelable(false)
-            .setNegativeButton("Cancle",DialogInterface.OnClickListener{
-                    dialog, id ->
+            .setNegativeButton("Cancle", DialogInterface.OnClickListener { dialog, id ->
                 dialog.dismiss()
             })
-            .setPositiveButton("Ok", DialogInterface.OnClickListener {
-                    dialog, id ->
+            .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
                 dialog.dismiss()
 
             })
@@ -277,7 +248,7 @@ class MonthFragment : Fragment(), recycle_Interface {
 
     }
 
-    fun getDatesForMonth(year: Int, month: Int): List<Date> {
+    private fun getDatesForMonth(year: Int, month: Int): List<Date> {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, year)
         calendar.set(Calendar.MONTH, month)
@@ -303,6 +274,14 @@ class MonthFragment : Fragment(), recycle_Interface {
             }
         }
         return months
+    }
+
+    fun checknodta() {
+        if (i == 12) {
+            nodata.isVisible = true
+        } else {
+            nodata.isVisible = false
+        }
     }
 
 

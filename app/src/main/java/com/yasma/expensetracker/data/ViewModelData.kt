@@ -81,7 +81,7 @@ class ViewModelData(application: Application) : AndroidViewModel(application) {
     fun Month_expense_chart(months: String,value: String):  LiveData<List<twodata>> {
         return repositary.Month_expense_chart(months,value)
     }
-    fun checkdta(value: String): Boolean {
+    fun checkdta(value: String): LiveData<Int> {
 
         return repositary.checkdta(value)
     }

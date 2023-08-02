@@ -42,10 +42,9 @@ class yearRepositary(private val Year: year) {
     fun sumof_income(value: String): LiveData<Int> {
         return Year.sumof_income(value)
     }
-    fun checkdta(value: String): Boolean {
-        val liveDataResult: LiveData<Boolean> = Year.checkdata(value)
-        return Transformations.map(liveDataResult) { it == true }.value ?: false
-//        return Year.checkdata(value)
+    fun checkdta(value: String): LiveData<Int> {
+
+        return Year.checkdata(value)
     }
 
 }
