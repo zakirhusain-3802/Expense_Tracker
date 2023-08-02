@@ -5,9 +5,11 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +51,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     private lateinit var mUserViewModel: ViewModelData
     private lateinit var firebaseAuth: FirebaseAuth
-
+    private lateinit var sharedPreferences: SharedPreferences
 
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("ResourceType")
@@ -61,33 +63,54 @@ class HomeFragment : Fragment(), recycle_Interface {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         firebaseAuth = FirebaseAuth.getInstance()
-        val nodata=view.findViewById<ImageView>(R.id.nodata)
+        val nodata = view.findViewById<ImageView>(R.id.nodata)
         val log_out = view.findViewById<TextView>(R.id.log_out)
 
-        val usersRef = FirebaseDatabase.getInstance().getReference("Users")
-        val currentUserUid = firebaseAuth.currentUser!!.uid
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+        // Store a username
+
+
+        // Retrieve and display the stored username
+        val storedUsername = retrieveUsername()
+        println("Stored Username:" + storedUsername.toString())
+        if (storedUsername != "") {
+            log_out.text = storedUsername.toString()
+
+        } else {
+
+
+            val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+            val currentUserUid = firebaseAuth.currentUser!!.uid
 
 // Method 1: Read data once using addListenerForSingleValueEvent
-        usersRef.child(currentUserUid).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    // Data exists, you can access it using snapshot.value
-                    val userData =
-                        snapshot.value
-                    log_out.text = userData.toString()
+            usersRef.child(currentUserUid)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            // Data exists, you can access it using snapshot.value
+                            val userData =
+                                snapshot.value
+                            log_out.text = userData.toString()
+                            val username = userData.toString()
 
-                } else {
+                            storeUsername(username)
 
-                }
-            }
+                        } else {
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+        }
 
         log_out.setOnClickListener() {
             firebaseAuth.signOut()
+            storeUsername("")
+
             val intent = Intent(context, Login_Activity::class.java)
             startActivity(intent)
         }
@@ -277,11 +300,10 @@ class HomeFragment : Fragment(), recycle_Interface {
             status.setTextColor(Color.parseColor("#A30000"))
         }
         status.text = (income1 - expense1).toString()
-        if(status.text=="0"){
-            nodata.isVisible=true
-        }
-        else{
-            nodata.isVisible=false
+        if (status.text == "0") {
+            nodata.isVisible = true
+        } else {
+            nodata.isVisible = false
         }
 
     }
@@ -310,11 +332,10 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         }
         status.text = (income1 - expense1).toString()
-        if(status.text=="0"){
-            nodata.isVisible=true
-        }
-        else{
-            nodata.isVisible=false
+        if (status.text == "0") {
+            nodata.isVisible = true
+        } else {
+            nodata.isVisible = false
         }
     }
 
@@ -384,6 +405,18 @@ class HomeFragment : Fragment(), recycle_Interface {
         }
         return dates
 
+    }
+
+    private fun storeUsername(username: String) {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("username", username)
+        editor.apply()
+        editor.commit()
+        println("stored data")
+    }
+
+    private fun retrieveUsername(): String {
+        return sharedPreferences.getString("username", "1") ?: "1"
     }
 
 
