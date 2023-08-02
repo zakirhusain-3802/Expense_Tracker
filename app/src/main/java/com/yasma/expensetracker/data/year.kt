@@ -40,6 +40,10 @@ fun returndates(today:String): LiveData<List<yeardata>>
     @Query("SELECT SUM(price) FROM user_data WHERE type= :value ")
     fun  sumof_expense(value:String):LiveData<Int>
 
+    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END AS result FROM user_data WHERE month LIKE '%' || :value || '%'")
+    fun  checkdata(value:String):LiveData<Boolean>
+
+
 
 
     @Query("SELECT SUM(price) FROM user_data WHERE type= :value ")

@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
 import android.widget.DatePicker
+import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -60,6 +61,7 @@ class HomeFragment : Fragment(), recycle_Interface {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         firebaseAuth = FirebaseAuth.getInstance()
+        val nodata=view.findViewById<ImageView>(R.id.nodata)
         val log_out = view.findViewById<TextView>(R.id.log_out)
 
         val usersRef = FirebaseDatabase.getInstance().getReference("Users")
@@ -72,7 +74,7 @@ class HomeFragment : Fragment(), recycle_Interface {
                     // Data exists, you can access it using snapshot.value
                     val userData =
                         snapshot.value
-                log_out.text=userData.toString()
+                    log_out.text = userData.toString()
 
                 } else {
 
@@ -84,13 +86,13 @@ class HomeFragment : Fragment(), recycle_Interface {
             }
         })
 
-                log_out . setOnClickListener (){
+        log_out.setOnClickListener() {
             firebaseAuth.signOut()
             val intent = Intent(context, Login_Activity::class.java)
             startActivity(intent)
         }
 //        var currentMonth:TextView=view.findViewById(R.id.currentmont)
-            val daily_month : TextView = view . findViewById (R.id.daily_month)
+        val daily_month: TextView = view.findViewById(R.id.daily_month)
         val daily_txt: TextView = view.findViewById(R.id.daily_txt)
         val fm1: FrameLayout = view.findViewById(R.id.frameLayout3)
         val cal = Calendar.getInstance()
@@ -165,12 +167,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 
             update.show(childFragmentManager, "Heloo")
-//            val fragmentManager=parentFragmentManager
-//            val ft=fragmentManager.beginTransaction()
-//            val newFragment=input_data()
-//            ft.replace(R.id.new_home,newFragment)
-//            ft.addToBackStack(null)
-//            ft.commit()
+
         }
 
         val ch_back: ImageView = view.findViewById(R.id.ch_month_backward)
@@ -280,6 +277,12 @@ class HomeFragment : Fragment(), recycle_Interface {
             status.setTextColor(Color.parseColor("#A30000"))
         }
         status.text = (income1 - expense1).toString()
+        if(status.text=="0"){
+            nodata.isVisible=true
+        }
+        else{
+            nodata.isVisible=false
+        }
 
     }
 
@@ -304,8 +307,15 @@ class HomeFragment : Fragment(), recycle_Interface {
             status.setTextColor(Color.parseColor("#007500"))
         } else {
             status.setTextColor(Color.parseColor("#A30000"))
+
         }
         status.text = (income1 - expense1).toString()
+        if(status.text=="0"){
+            nodata.isVisible=true
+        }
+        else{
+            nodata.isVisible=false
+        }
     }
 
 

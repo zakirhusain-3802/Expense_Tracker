@@ -152,10 +152,13 @@
 
     <TextView
         android:id="@+id/error_msg"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:visibility="gone"
+        android:paddingLeft="0dp"
+        android:layout_marginLeft="20dp"
+
+        android:visibility="visible"
         android:textColor="@color/red"
         android:text="Incorrect Email or Password"
         app:layout_constraintBottom_toTopOf="@+id/nameLayout"

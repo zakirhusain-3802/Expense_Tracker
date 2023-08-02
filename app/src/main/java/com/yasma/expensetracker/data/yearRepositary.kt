@@ -1,6 +1,7 @@
 package com.yasma.expensetracker.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import java.util.*
 
 class yearRepositary(private val Year: year) {
@@ -41,4 +42,10 @@ class yearRepositary(private val Year: year) {
     fun sumof_income(value: String): LiveData<Int> {
         return Year.sumof_income(value)
     }
+    fun checkdta(value: String): Boolean {
+        val liveDataResult: LiveData<Boolean> = Year.checkdata(value)
+        return Transformations.map(liveDataResult) { it == true }.value ?: false
+//        return Year.checkdata(value)
+    }
+
 }

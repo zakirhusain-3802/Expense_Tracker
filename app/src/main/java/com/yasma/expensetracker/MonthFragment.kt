@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -96,7 +97,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         val dates =
             getDatesForMonth(year, month - 1) // a method to get a list of dates for the month
         val monthAdapter = MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-        starts(monthAdapter, recycleView, no_dta)
+        starts(monthAdapter, recycleView, year)
 
         //recycleView.adapter = monthAdapter
 
@@ -106,7 +107,7 @@ class MonthFragment : Fragment(), recycle_Interface {
             printmont = "/" + year.toString()
             val monthAdapter =
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-            starts(monthAdapter, recycleView, no_dta)
+            starts(monthAdapter, recycleView, year)
             month_name.text = year.toString()
 //            println(year)
 //            cal[Calendar.MONTH] = getMonth_minus(month)-1
@@ -127,7 +128,7 @@ class MonthFragment : Fragment(), recycle_Interface {
             printmont = "/" + year.toString()
             val monthAdapter =
                 MonthAdapter(years_month(year), mUserViewModel, printmont, nodta, this)
-            starts(monthAdapter, recycleView, no_dta)
+            starts(monthAdapter, recycleView, year)
             month_name.text = year.toString()
 //            println(year)
 
@@ -146,14 +147,15 @@ class MonthFragment : Fragment(), recycle_Interface {
 
     }
 
-    private fun starts(monthAdapter: MonthAdapter, recycleView: RecyclerView?, no_dta: ImageView) {
+    private fun starts(monthAdapter: MonthAdapter, recycleView: RecyclerView?, no_dta: Int) {
         recycleView?.adapter = monthAdapter
+        val data_is=mUserViewModel.checkdta(no_dta.toString())!!
+        println(data_is.toString() +" nodat")
+//        if (data_is.equals(0)){
+//            no_dta.isVisible=true
+//        }
 
-        if (recycleView != null) {
-            if (recycleView.isEmpty()) {
-//                no_dta.visibility=View.VISIBLE
-            }
-        }
+
 
 
     }
