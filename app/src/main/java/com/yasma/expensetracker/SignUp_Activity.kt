@@ -27,10 +27,10 @@ class SignUp_Activity : AppCompatActivity() {
         val login = findViewById<TextView>(R.id.loin_in)
         val name = getColoredSpanned("Already Registered,", "#111111")
         val surName = getColoredSpanned("Sign In !", "#DF2E38")
-        login.setText(Html.fromHtml(name + "<b>" + surName + "</b>"))
+        login.text = Html.fromHtml(name + "<b>" + surName + "</b>")
 
 
-        login.setOnClickListener() {
+        login.setOnClickListener {
             val intent = Intent(this, Login_Activity::class.java)
             startActivity(intent)
         }
@@ -41,7 +41,7 @@ class SignUp_Activity : AppCompatActivity() {
 
         val sign_up = findViewById<Button>(R.id.sign_up)
 
-        sign_up.setOnClickListener() {
+        sign_up.setOnClickListener {
             val un = names.text.toString()
             val em = email.text.toString()
             val pas = pass.text.toString()
@@ -63,7 +63,7 @@ class SignUp_Activity : AppCompatActivity() {
 
                                         FirebaseDatabase.getInstance().getReference("Users")
                                             .child(firebaseAuth.currentUser!!.uid).setValue(un)
-                                            .addOnCompleteListener() {
+                                            .addOnCompleteListener {
                                                 if (it.isSuccessful) {
                                                     Toast.makeText(
                                                         this,

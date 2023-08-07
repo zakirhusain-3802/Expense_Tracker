@@ -40,12 +40,14 @@
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_selector_exp.xml" value="0.1795" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_textcolor.xml" value="0.1" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/radio_textcolor_exp.xml" value="0.1795" />
+        <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_forget_passowrd.xml" value="0.2" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_main.xml" value="0.21851851851851853" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/daily_data.xml" value="0.5" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/exp_div.xml" value="0.30112721417069244" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/exp_div1.xml" value="0.17882352941176471" />
+        <entry key="..\:/Expensetracker/app/src/main/res/layout/forget_password.xml" value="0.19895833333333332" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_home.xml" value="0.1962864721485411" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_input_data.xml" value="0.15" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_month.xml" value="0.33" />

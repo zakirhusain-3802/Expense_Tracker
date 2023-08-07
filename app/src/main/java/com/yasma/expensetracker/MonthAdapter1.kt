@@ -21,7 +21,7 @@ class MonthAdapter1(
     private var mUserViewModel: ViewModelData,
     private val printmont: String,
     private val today: Int,
-    private final var recycleInterface: recycle_Interface
+    private var recycleInterface: recycle_Interface
 ) : RecyclerView.Adapter<MonthAdapter1.MonthViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthViewHolder {
@@ -62,7 +62,7 @@ class MonthAdapter1(
 
         fun bind(date: Date) {
 
-            monthdiv.setVisibility(View.GONE)
+            monthdiv.visibility = View.GONE
             val dateFormat = SimpleDateFormat("d")
             val dateFormat1 = SimpleDateFormat("E")
             val curr_date = dateFormat.format(date)
@@ -97,7 +97,7 @@ class MonthAdapter1(
         private fun notprint(toString: String) {
 
             if (toString != "null") {
-                monthdiv.setVisibility(View.VISIBLE)
+                monthdiv.visibility = View.VISIBLE
                 inctxy.text = toString.toString() + ".00"
                 i = Integer.parseInt(toString.toString())
 
@@ -114,7 +114,7 @@ class MonthAdapter1(
         private fun notprintexp(toString: String) {
 
             if (toString != "null") {
-                monthdiv.setVisibility(View.VISIBLE)
+                monthdiv.visibility = View.VISIBLE
                 exptxt.text = toString.toString() + ".00"
                 e = Integer.parseInt(toString.toString())
             } else {
@@ -128,7 +128,7 @@ class MonthAdapter1(
 
         private fun display() {
             if (inctxy.text == "0.00" && exptxt.text == "0.00") {
-                monthdiv.setVisibility(View.GONE)
+                monthdiv.visibility = View.GONE
 
             } else {
 //

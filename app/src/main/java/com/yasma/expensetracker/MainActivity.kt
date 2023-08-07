@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-       val backgroundColor = getResources().getColor(R.color.white);
+       val backgroundColor = resources.getColor(R.color.white)
         bottomNavigationView.setBackgroundColor(backgroundColor)
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->

@@ -47,7 +47,8 @@ class MonthFragment : Fragment(), recycle_Interface {
     // TODO: Rename and change types of parameters
     private lateinit var mUserViewModel: ViewModelData
     private var i: Int = 0
-    private lateinit var nodata:ImageView
+    private lateinit var nodata: ImageView
+
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -59,7 +60,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_month, container, false)
         val month_name: TextView = view.findViewById(R.id.month_name)
-        nodata=view.findViewById(R.id.nodata1)
+        nodata = view.findViewById(R.id.nodata1)
 
         var nodta: Boolean = false
         //getting current year
@@ -104,7 +105,7 @@ class MonthFragment : Fragment(), recycle_Interface {
 
         //recycleView.adapter = monthAdapter
 
-        arr_back.setOnClickListener() {
+        arr_back.setOnClickListener {
             i = 0
             year = year - 1
             printmont = "/" + year.toString()
@@ -115,7 +116,7 @@ class MonthFragment : Fragment(), recycle_Interface {
 
 
         }
-        arr_up.setOnClickListener() {
+        arr_up.setOnClickListener {
 
             i = 0
             year = year + 1
@@ -193,7 +194,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         args.putInt("id", position.id)
 
         val update = update_fragment()
-        update.setArguments(args)
+        update.arguments = args
 
         update.show(childFragmentManager, "Heloo")
 
@@ -212,7 +213,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         val fragmentManager = parentFragmentManager
         val ft = fragmentManager.beginTransaction()
         val newFragment = monthdaliy()
-        newFragment.setArguments(args)
+        newFragment.arguments = args
         ft.setCustomAnimations(
             androidx.appcompat.R.anim.abc_fade_in,
             androidx.appcompat.R.anim.abc_fade_out
@@ -279,11 +280,7 @@ class MonthFragment : Fragment(), recycle_Interface {
 
     fun checknodta() {
         if (nodata != null) {
-            if (i == 12) {
-                nodata.isVisible = true
-            } else {
-                nodata.isVisible = false
-            }
+            nodata.isVisible = i == 12
         }
     }
 

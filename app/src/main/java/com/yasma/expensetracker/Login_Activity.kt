@@ -25,18 +25,23 @@ class Login_Activity : AppCompatActivity() {
         val sin_up=findViewById<TextView>(R.id.sign_up)
         val name = getColoredSpanned("Not Registered Yet,", "#111111")
         val surName = getColoredSpanned("Sign Up !", "#DF2E38")
-        sin_up.setText(Html.fromHtml(name+"<b>"+surName+"</b>"))
+        sin_up.text = Html.fromHtml(name+"<b>"+surName+"</b>")
 
-        sin_up.setOnClickListener(){
+        sin_up.setOnClickListener {
             val intent = Intent(this, SignUp_Activity::class.java)
             startActivity(intent)
+        }
+
+        val forget=findViewById<TextView>(R.id.password_fog)
+        forget.setOnClickListener(){
+            forget_passowrd()
         }
 
         val email=findViewById<EditText>(R.id.emailEt)
         val pass=findViewById<EditText>(R.id.passET)
 
         val log_in=findViewById<Button>(R.id.log_in)
-        log_in.setOnClickListener(){
+        log_in.setOnClickListener {
             val em=email.text.toString()
             val pas=pass.text.toString()
             if(em.isNotEmpty() && pas.isNotEmpty() ){
@@ -95,6 +100,11 @@ class Login_Activity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun forget_passowrd() {
+        val intent = Intent(this, forget_passowrd::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {

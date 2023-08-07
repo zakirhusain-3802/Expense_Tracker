@@ -18,7 +18,7 @@ class MonthAdapter(
     private var mUserViewModel: ViewModelData,
     private val printmont: String,
      var nodta: Boolean=false,
-    private final var recycleInterface: recycle_Interface
+    private var recycleInterface: recycle_Interface
 ) : RecyclerView.Adapter<MonthAdapter.MonthViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthViewHolder {
@@ -69,7 +69,7 @@ class MonthAdapter(
             val month_data = monthindex.toString() + printmont
 //            println(month_data)
 
-            month_div.setVisibility(View.GONE)
+            month_div.visibility = View.GONE
 
 
             mUserViewModel.yeardata(month_data, "Income")
@@ -80,7 +80,7 @@ class MonthAdapter(
             dateTextView.text = curr_date1.toString()
 
 
-            month_div.setOnClickListener() {
+            month_div.setOnClickListener {
                 if (recycleInterface != null) {
 
                     recycleInterface.monthdat(month_data)
@@ -96,7 +96,7 @@ class MonthAdapter(
         private fun notprint(toString: String) {
 
             if (toString != "null") {
-                month_div.setVisibility(View.VISIBLE)
+                month_div.visibility = View.VISIBLE
                 inctxy.text = toString.toString() + ".00"
                 i = Integer.parseInt(toString.toString())
 
@@ -114,7 +114,7 @@ class MonthAdapter(
         private fun notprintexp(toString: String) {
 
             if (toString != "null") {
-                month_div.setVisibility(View.VISIBLE)
+                month_div.visibility = View.VISIBLE
                 exptxt.text = toString.toString() + ".00"
                 e = Integer.parseInt(toString.toString())
 
@@ -131,7 +131,7 @@ class MonthAdapter(
 
         private fun display(recycleInterface: recycle_Interface) {
             if (inctxy.text == "0.00" && exptxt.text == "0.00") {
-                month_div.setVisibility(View.GONE)
+                month_div.visibility = View.GONE
                 recycleInterface.nodata()
 
 

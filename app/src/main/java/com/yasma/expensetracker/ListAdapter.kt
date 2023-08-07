@@ -10,14 +10,12 @@ import kotlinx.android.synthetic.main.exp_div.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ListAdapter(private final var recycleInterface: recycle_Interface) :
+class ListAdapter(private var recycleInterface: recycle_Interface) :
     RecyclerView.Adapter<com.yasma.expensetracker.ListAdapter.MyViewHolde>() {
     private var yearData = emptyList<yeardata>()
 
 
-    class MyViewHolde(itemview: View) : RecyclerView.ViewHolder(itemview) {
-
-    }
+    class MyViewHolde(itemview: View) : RecyclerView.ViewHolder(itemview)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolde {
 
@@ -50,7 +48,7 @@ class ListAdapter(private final var recycleInterface: recycle_Interface) :
         holder.itemView.textView4.text = currentItem.description.toString()
 //        holder.itemView.textView5.text = currentItem.price.toString()
 
-        holder.itemView.rowlayout.setOnClickListener() {
+        holder.itemView.rowlayout.setOnClickListener {
             if (recycleInterface !== null) {
                 recycleInterface.onItemClick(currentItem)
             }

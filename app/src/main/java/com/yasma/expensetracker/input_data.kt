@@ -63,23 +63,23 @@ class input_data : DialogFragment() {
         val m=SimpleDateFormat("M/yyyy")
         val month=m.format(Date())
         val clos: Button = view.findViewById(R.id.button5)
-         clos.setText("ADD")
+        clos.text = "ADD"
 
-        dat.setText(currentDate.toString())
+        dat.text = currentDate.toString()
 
 
-        dat.setOnClickListener(){
+        dat.setOnClickListener {
          today=  showDatePickerDialog(requireContext(),dat)
             println(today)
         }
-        clos.setOnClickListener() {
+        clos.setOnClickListener {
             tryd(view,today,month)
 
         }
 
         return view
     }
-    public fun tryd(view: View,today:String ,month:String){
+    fun tryd(view: View,today:String ,month:String){
 
 
         val t:EditText=view.findViewById(R.id.editTextTextPersonName)
@@ -135,9 +135,10 @@ class input_data : DialogFragment() {
 
             val delim="/"
             var list=try_date.split(delim)
-            println(list+" checking")
+//            println(list+" checking")
             var try_month= list[1].toString()+"/"+list[2].toString()
-            println(try_month + "Month and year")
+            var years=list[2]
+            println(years + "input year")
 
 
             val deardata=yeardata(0,try_date,type,title,des, try_month, amount)

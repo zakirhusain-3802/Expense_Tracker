@@ -107,7 +107,7 @@ class HomeFragment : Fragment(), recycle_Interface {
                 })
         }
 
-        log_out.setOnClickListener() {
+        log_out.setOnClickListener {
             firebaseAuth.signOut()
             storeUsername("")
 
@@ -150,8 +150,8 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 
         val layoytmanager = LinearLayoutManager(requireContext())
-        layoytmanager.setReverseLayout(true)
-        layoytmanager.setStackFromEnd(true);
+        layoytmanager.reverseLayout = true
+        layoytmanager.stackFromEnd = true
 
         recycleView.layoutManager = layoytmanager
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
@@ -184,7 +184,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 
         val b: ImageButton = view.findViewById(R.id.imageButton)
-        b.setOnClickListener() {
+        b.setOnClickListener {
 
             val update = input_data()
 
@@ -194,7 +194,7 @@ class HomeFragment : Fragment(), recycle_Interface {
         }
 
         val ch_back: ImageView = view.findViewById(R.id.ch_month_backward)
-        ch_back.setOnClickListener() {
+        ch_back.setOnClickListener {
             val cal = Calendar.getInstance()
             if (m1 > 1) {
                 m1 = m1 - 1
@@ -231,7 +231,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         }
         val ch_for: ImageView = view.findViewById(R.id.ch_month_forward)
-        ch_for.setOnClickListener() {
+        ch_for.setOnClickListener {
             val cal = Calendar.getInstance()
             if (m1 < 12) {
                 m1 = m1 + 1
@@ -267,7 +267,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 
         }
-        daily_month.setOnClickListener() {
+        daily_month.setOnClickListener {
 
         }
 
@@ -300,11 +300,7 @@ class HomeFragment : Fragment(), recycle_Interface {
             status.setTextColor(Color.parseColor("#A30000"))
         }
         status.text = (income1 - expense1).toString()
-        if (status.text == "0") {
-            nodata.isVisible = true
-        } else {
-            nodata.isVisible = false
-        }
+        nodata.isVisible = status.text == "0"
 
     }
 
@@ -332,11 +328,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         }
         status.text = (income1 - expense1).toString()
-        if (status.text == "0") {
-            nodata.isVisible = true
-        } else {
-            nodata.isVisible = false
-        }
+        nodata.isVisible = status.text == "0"
     }
 
 
@@ -351,7 +343,7 @@ class HomeFragment : Fragment(), recycle_Interface {
         args.putInt("id", position.id)
 
         val update = update_fragment()
-        update.setArguments(args)
+        update.arguments = args
 
         update.show(childFragmentManager, "Heloo")
 

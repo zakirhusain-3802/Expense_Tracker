@@ -26,7 +26,7 @@ private  var sel_mont1=""
  * Use the [update_fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class update_fragment() : DialogFragment() {
+class update_fragment : DialogFragment() {
     private lateinit var duViewmodel: ViewModelData
 
 
@@ -57,25 +57,25 @@ class update_fragment() : DialogFragment() {
             t.setText(margs.getString("title", "hello"))
             d.setText(margs.getString("des", "hello"))
             p.setText(margs.getString("amount", "hello"))
-            dat.setText(margs.getString("currentdate", "hello"))
+            dat.text = margs.getString("currentdate", "hello")
             val ty: String = margs.getString("type", "hello")
 
             if (ty == "Expense") {
-                e.setChecked(true)
+                e.isChecked = true
             } else {
-                i.setChecked(true)
+                i.isChecked = true
             }
 
         }
 
         val up: Button = view.findViewById(R.id.up_button5)
-        up.setText("Update")
-        up.setOnClickListener() {
+        up.text = "Update"
+        up.setOnClickListener {
             val margs = arguments
             if (margs != null) {
                 val curren = margs.getString("currentdate", "hello").toString()
                 var mon = margs.getString("month", "heloo").toString()
-                 currentdates=dat.getText().toString()
+                 currentdates=dat.text.toString()
 
                 val id = margs.getInt("id")
 
@@ -90,7 +90,7 @@ class update_fragment() : DialogFragment() {
             }
 
         }
-        dat.setOnClickListener(){
+        dat.setOnClickListener {
             showDatePickerDialog(requireContext(),dat)
         }
         return view
@@ -136,7 +136,11 @@ class update_fragment() : DialogFragment() {
                 type = "Income"
                 Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             }
+            val delim="/"
+            var list= sel_mont1.split(delim)
 
+            var years=list[2]
+            println(years + "update  year")
 
 
             val updateUSER = yeardata(id, currentdate, type, title, des, sel_mont1, amount)

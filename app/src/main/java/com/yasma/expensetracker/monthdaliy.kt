@@ -145,7 +145,7 @@ class monthdaliy : Fragment(),recycle_Interface {
         args.putInt("id", position.id)
 
         val update = update_fragment()
-        update.setArguments(args)
+        update.arguments = args
 
         update.show(childFragmentManager, "Heloo")
 

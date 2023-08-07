@@ -25,8 +25,7 @@ interface year {
 
     @Query("SELECT * FROM user_data WHERE d_date=:today ORDER BY id DESC")
     fun todayData(today:String): LiveData<List<yeardata>>
-//    @Query( "SELECT * FROM user_data WHERE LIKE '%"+":today'"+" ORDER BY id DESC")
-//    fun todayData(today:String): LiveData<List<yeardata>>
+
 @Query("SELECT * FROM user_data WHERE d_date=:today ORDER BY id DESC")
 fun returndates(today:String): LiveData<List<yeardata>>
 
@@ -42,9 +41,6 @@ fun returndates(today:String): LiveData<List<yeardata>>
 
     @Query("SELECT SUM(price) From user_data WHERE month=:value")
     fun  checkdata(value:String):LiveData<Int>
-
-
-
 
     @Query("SELECT SUM(price) FROM user_data WHERE type= :value ")
     fun  sumof_income(value:String):LiveData<Int>
