@@ -26,7 +26,6 @@ import com.yasma.expensetracker.data.yeardata
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_month.*
-import kotlinx.android.synthetic.main.fragment_month.nodata
 import kotlinx.android.synthetic.main.fragment_month.view.*
 import java.text.SimpleDateFormat
 import java.time.Month
@@ -48,6 +47,7 @@ class MonthFragment : Fragment(), recycle_Interface {
     // TODO: Rename and change types of parameters
     private lateinit var mUserViewModel: ViewModelData
     private var i: Int = 0
+    private lateinit var nodata:ImageView
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -59,6 +59,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_month, container, false)
         val month_name: TextView = view.findViewById(R.id.month_name)
+        nodata=view.findViewById(R.id.nodata1)
 
         var nodta: Boolean = false
         //getting current year
@@ -277,10 +278,12 @@ class MonthFragment : Fragment(), recycle_Interface {
     }
 
     fun checknodta() {
-        if (i == 12) {
-            nodata.isVisible = true
-        } else {
-            nodata.isVisible = false
+        if (nodata != null) {
+            if (i == 12) {
+                nodata.isVisible = true
+            } else {
+                nodata.isVisible = false
+            }
         }
     }
 

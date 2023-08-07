@@ -113,15 +113,17 @@ class monthdaliy : Fragment(),recycle_Interface {
             })
             .setPositiveButton("Ok", DialogInterface.OnClickListener {
                     dialog, id ->
-                mUserViewModel.deletData(currentItem)
+
                 dialog.dismiss()
+                mUserViewModel.deletData(currentItem)
+
 
             })
 
         val alert = dialogBuilder.create()
         alert.setTitle("Do you want to Delete record ?")
         alert.show()
-        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
     }
 
 

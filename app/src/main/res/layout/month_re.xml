@@ -92,11 +92,11 @@
 
             android:drawableLeft="@drawable/rupee2"
             android:gravity="left"
-            android:minWidth="45dp"
-
-            android:text="0"
+            android:minWidth="100dp"
+            android:text="10000000"
+            android:textSize="12dp"
             android:textColor="#1E1E1E"
-            android:textSize="15dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.783"

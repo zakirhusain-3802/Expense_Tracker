@@ -41,7 +41,7 @@ class ListAdapter1(private final var recycleInterface: recycle_Interface) :
         val type = currentItem.type.toString()
         if (type == "Expense") {
             holder.itemView.textView51.setTextColor(Color.parseColor("#A30000"))
-            holder.itemView.textView51.text = "- " + currentItem.price.toString()
+            holder.itemView.textView51.text = "- " + currentItem.price.toString()+".00"
         } else {
             holder.itemView.textView51.setTextColor(Color.parseColor("#3F51B5"))
             holder.itemView.textView51.text = currentItem.price.toString() + ".00"

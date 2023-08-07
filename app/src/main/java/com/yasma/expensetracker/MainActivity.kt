@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(NewHome_fragmnet(), "home Fragment")
         adapter.addFragment(newfragmnet(), "Month Fragment")
-        adapter.addFragment(OverFragment(), "Over Fragment")
+//        adapter.addFragment(OverFragment(), "Over Fragment")
         viewPager.adapter = adapter
 
 
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> viewPager.currentItem = 0
                 R.id.month -> viewPager.currentItem = 1
-                R.id.over -> viewPager.currentItem = 2
+//                R.id.over -> viewPager.currentItem = 2
                 else -> return@setOnNavigationItemSelectedListener false
             }
             true

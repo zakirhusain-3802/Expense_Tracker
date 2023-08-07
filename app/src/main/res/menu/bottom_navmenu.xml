@@ -11,10 +11,10 @@
         android:id="@+id/month"
         android:icon="@drawable/ic_outline_assignment_24"
         android:background="@color/bg_re"/>
-    <item android:title="OverView"
-        android:icon="@drawable/ic_sharp_addchart_24"
-        android:id="@+id/over"
-    android:background="@color/bg_re">
+<!--    <item android:title="OverView"-->
+<!--        android:icon="@drawable/ic_sharp_addchart_24"-->
+<!--        android:id="@+id/over"-->
+<!--    android:background="@color/bg_re">-->
 
-    </item>
+<!--    </item>-->
 </menu>
