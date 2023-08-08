@@ -65,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:background="@color/golds"
+        android:background="@drawable/rounded_btn"
         android:text="Sign In"
         android:textColor="@color/white"
         android:textStyle="bold"
