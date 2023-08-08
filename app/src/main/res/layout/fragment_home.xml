@@ -159,7 +159,7 @@
             android:gravity="center"
             android:background="@drawable/daliy_div"
 
-            android:text="Daily"
+            android:text="Monthly"
             android:textColor="#FF9800"
 android:padding="5dp"
             android:textSize="15sp"
@@ -265,33 +265,22 @@ android:padding="5dp"
 
 
     <TextView
-        android:id="@+id/helo"
+        android:id="@+id/log_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, "
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
-
-    <TextView
-        android:id="@+id/log_out"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="#FF9800"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
+        android:padding="5dp"
+        android:text=" Sign Out"
+        android:textColor="@color/golds"
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/helo"
+
+        app:layout_constraintEnd_toStartOf="@+id/ch_month_backward"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <ImageView
         android:id="@+id/nodata"

@@ -22,6 +22,7 @@
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_baseline_arrow_upward_24.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2075" />
+        <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
         <entry key="..\:/Expensetracker/app/src/main/res/drawable/ic_outline_assignment_24.xml" value="0.2075" />
@@ -48,7 +49,7 @@
         <entry key="..\:/Expensetracker/app/src/main/res/layout/exp_div.xml" value="0.30112721417069244" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/exp_div1.xml" value="0.17882352941176471" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/forget_password.xml" value="0.19895833333333332" />
-        <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_home.xml" value="0.1962864721485411" />
+        <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_input_data.xml" value="0.15" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_month.xml" value="0.33" />
         <entry key="..\:/Expensetracker/app/src/main/res/layout/fragment_monthdaliy.xml" value="0.25" />

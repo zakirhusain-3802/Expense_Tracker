@@ -75,7 +75,7 @@ class HomeFragment : Fragment(), recycle_Interface {
         val storedUsername = retrieveUsername()
         println("Stored Username:" + storedUsername.toString())
         if (storedUsername != "") {
-            log_out.text = storedUsername.toString()
+//            log_out.text = storedUsername.toString()
 
         } else {
 
@@ -91,7 +91,7 @@ class HomeFragment : Fragment(), recycle_Interface {
                             // Data exists, you can access it using snapshot.value
                             val userData =
                                 snapshot.value
-                            log_out.text = userData.toString()
+//                            log_out.text = userData.toString()
                             val username = userData.toString()
 
                             storeUsername(username)
