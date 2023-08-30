@@ -6,25 +6,18 @@ Expense Tracker is an Android application developed using Kotlin in Android Stud
 
 ## Features
 
-1. User Registration and Login:
-   - Users can create a new account by providing their email address and password.
-   - Existing users can log in to their accounts using their registered credentials.
-
-2. Dashboard:
+1. Dashboard:
    - The dashboard provides an overview of the user's income, expenses, and total balance.
    - It displays categorized summaries and graphical representations of expenses and income.
 
-3. Add Transactions:
+2. Add Transactions:
    - Users can add new transactions by providing details such as transaction type (income/expense), amount, category, and notes.
    - They can select predefined categories or create custom categories for better organization.
 
-4. Transaction History:
+3. Transaction History:
    - The application maintains a transaction history, displaying a chronological list of all the user's transactions.
    - Users can view, edit, or delete individual transactions as needed.
 
-5. Summary and Analytics:
-   - The application generates detailed summaries and analytics based on the user's transactions.
-   - Users can view their spending patterns, expense categories, income sources, and other relevant insights.
 
 ## Installation
 
@@ -42,21 +35,7 @@ To install and run the Expense Tracker application on your Android device, follo
 
 6. The application will be installed and launched on your Android device or emulator.
 
-## Usage
 
-Upon launching the Expense Tracker application, follow these guidelines to utilize its features:
-
-1. Register a new account or log in to your existing account.
-
-2. Explore the dashboard to view an overview of your income, expenses, and total balance.
-
-3. Add transactions by selecting the "Add Transaction" option and providing the necessary details.
-
-4. Access the transaction history to view, edit, or delete your past transactions.
-
-5. Utilize the summary and analytics features to gain insights into your spending patterns and financial habits.
-
-6. Log out of your account when you're done using the application to ensure security.
 
 ## Support and Feedback
 
@@ -64,3 +43,20 @@ For any issues, suggestions, or feedback regarding the Expense Tracker applicati
 
 
 **Note:** This README is a template that provides a general structure and information for your Expense Tracker application. Feel free to customize it based on your application's specific features and requirements.
+
+## Images
+
+![WhatsApp Image 2023-08-30 at 10 35 09 AM](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/b7f3c60c-bc7f-4b86-9189-139d1b1567a9)
+
+![WhatsApp Image 2023-08-30 at 10 35 09 AM (1)](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/b21b37c6-d62d-469a-8385-67c3d8f6e362)
+
+![WhatsApp Image 2023-08-30 at 10 35 08 AM (1)](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/20525e14-c771-4951-ab72-cf875e2c4b19)
+![WhatsApp Image 2023-08-30 at 10 36 27 AM](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/26697754-29d4-4ae2-b529-be6d1a03681e)
+
+
+![WhatsApp Image 2023-08-30 at 10 35 11 AM](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/5a739a20-12d7-4b08-ac3f-42549151ef05)
+
+![WhatsApp Image 2023-08-30 at 10 35 08 AM](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/8eac5a81-8ffb-49a6-9acf-87ef48f32092)
+
+![WhatsApp Image 2023-08-30 at 10 35 10 AM](https://github.com/zakirhusain-3802/Expense_Tracker/assets/66136416/0cd6676f-548f-4fd4-ad5c-b654292497eb)
+
