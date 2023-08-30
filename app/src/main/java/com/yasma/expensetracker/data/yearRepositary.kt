@@ -46,5 +46,11 @@ class yearRepositary(private val Year: year) {
 
         return Year.checkdata(value)
     }
+    fun yearincome(value: String,tp:String):LiveData<Int>{
+        return Year.yearincmoe(value,tp)
+    }
+    fun yearexpesne(value: String,tp:String):LiveData<Int>{
+        return Year.yearexpense(value,tp)
+    }
 
 }

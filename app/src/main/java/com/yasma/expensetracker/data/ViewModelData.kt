@@ -85,4 +85,10 @@ class ViewModelData(application: Application) : AndroidViewModel(application) {
 
         return repositary.checkdta(value)
     }
+    fun yearincome(value: String,tp:String):LiveData<Int>{
+        return repositary.yearincome(value,tp)
+    }
+    fun yearexpense(value: String,tp:String):LiveData<Int>{
+        return repositary.yearexpesne(value,tp)
+    }
 }

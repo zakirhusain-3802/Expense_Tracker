@@ -45,4 +45,11 @@ fun returndates(today:String): LiveData<List<yeardata>>
     @Query("SELECT SUM(price) FROM user_data WHERE type= :value ")
     fun  sumof_income(value:String):LiveData<Int>
 
+    @Query("SELECT SUM(price) FROM user_data WHERE month LIKE :value AND type=:tp")
+    fun yearincmoe(value: String,tp:String):LiveData<Int>
+    @Query("SELECT SUM(price) FROM user_data WHERE month LIKE :value AND type=:tp")
+    fun yearexpense(value: String,tp:String):LiveData<Int>
+
+
+
 }

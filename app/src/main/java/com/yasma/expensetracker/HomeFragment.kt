@@ -71,49 +71,49 @@ class HomeFragment : Fragment(), recycle_Interface {
         // Store a username
 
 
-        // Retrieve and display the stored username
-        val storedUsername = retrieveUsername()
-        println("Stored Username:" + storedUsername.toString())
-        if (storedUsername != "") {
-//            log_out.text = storedUsername.toString()
+//        // Retrieve and display the stored username
+//        val storedUsername = retrieveUsername()
+//        println("Stored Username:" + storedUsername.toString())
+//        if (storedUsername != "") {
+////            log_out.text = storedUsername.toString()
+//
+//        } else {
+//
+//
+//            val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+//            val currentUserUid = firebaseAuth.currentUser!!.uid
+//
+//// Method 1: Read data once using addListenerForSingleValueEvent
+//            usersRef.child(currentUserUid)
+//                .addListenerForSingleValueEvent(object : ValueEventListener {
+//                    override fun onDataChange(snapshot: DataSnapshot) {
+//                        if (snapshot.exists()) {
+//                            // Data exists, you can access it using snapshot.value
+//                            val userData =
+//                                snapshot.value
+////                            log_out.text = userData.toString()
+//                            val username = userData.toString()
+//
+//                            storeUsername(username)
+//
+//                        } else {
+//
+//                        }
+//                    }
+//
+//                    override fun onCancelled(error: DatabaseError) {
+//                        TODO("Not yet implemented")
+//                    }
+//                })
+//        }
 
-        } else {
-
-
-            val usersRef = FirebaseDatabase.getInstance().getReference("Users")
-            val currentUserUid = firebaseAuth.currentUser!!.uid
-
-// Method 1: Read data once using addListenerForSingleValueEvent
-            usersRef.child(currentUserUid)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.exists()) {
-                            // Data exists, you can access it using snapshot.value
-                            val userData =
-                                snapshot.value
-//                            log_out.text = userData.toString()
-                            val username = userData.toString()
-
-                            storeUsername(username)
-
-                        } else {
-
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })
-        }
-
-        log_out.setOnClickListener {
-            firebaseAuth.signOut()
-            storeUsername("")
-
-            val intent = Intent(context, Login_Activity::class.java)
-            startActivity(intent)
-        }
+//        log_out.setOnClickListener {
+//            firebaseAuth.signOut()
+//            storeUsername("")
+//
+//            val intent = Intent(context, Login_Activity::class.java)
+//            startActivity(intent)
+//        }
 //        var currentMonth:TextView=view.findViewById(R.id.currentmont)
         val daily_month: TextView = view.findViewById(R.id.daily_month)
         val daily_txt: TextView = view.findViewById(R.id.daily_txt)
@@ -147,8 +147,6 @@ class HomeFragment : Fragment(), recycle_Interface {
 
 //        currentMonth.text=mon_title.toString()+" "+year.toString()
         ///
-
-
         val layoytmanager = LinearLayoutManager(requireContext())
         layoytmanager.reverseLayout = true
         layoytmanager.stackFromEnd = true
@@ -399,13 +397,13 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     }
 
-    private fun storeUsername(username: String) {
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString("username", username)
-        editor.apply()
-        editor.commit()
-        println("stored data")
-    }
+//    private fun storeUsername(username: String) {
+//        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+//        editor.putString("username", username)
+//        editor.apply()
+//        editor.commit()
+//        println("stored data")
+//    }
 
     private fun retrieveUsername(): String {
         return sharedPreferences.getString("username", "1") ?: "1"

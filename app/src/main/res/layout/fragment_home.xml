@@ -173,6 +173,7 @@ android:padding="5dp"
 
 
     </FrameLayout>
+    
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycle"
@@ -182,7 +183,7 @@ android:padding="5dp"
         android:layout_marginTop="5dp"
         android:paddingRight="15dp"
         android:background="@color/act"
-        android:paddingBottom="380dp"
+        android:paddingBottom="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -198,7 +199,7 @@ android:padding="5dp"
         app:cardCornerRadius="50dp"
 
         android:background="@color/golds"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -213,6 +214,7 @@ android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/golds"
+
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -270,6 +272,7 @@ android:padding="5dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_baseline_logout_24"
         android:padding="5dp"
+        android:visibility="invisible"
         android:text=" Sign Out"
         android:textColor="@color/golds"
         android:textSize="17dp"

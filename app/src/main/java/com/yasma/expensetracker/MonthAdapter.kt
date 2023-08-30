@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat
 import java.time.Month
 import java.util.*
 
+
 class MonthAdapter(
     private val Month: List<Month>,
     private var mUserViewModel: ViewModelData,
@@ -98,6 +99,7 @@ class MonthAdapter(
             if (toString != "null") {
                 month_div.visibility = View.VISIBLE
                 inctxy.text = toString.toString() + ".00"
+
                 i = Integer.parseInt(toString.toString())
 
 
@@ -136,6 +138,7 @@ class MonthAdapter(
 
 
             } else {
+
 
                     balance.text = ((i - e).toString() + ".00")
 

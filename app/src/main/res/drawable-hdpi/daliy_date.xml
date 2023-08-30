@@ -12,7 +12,7 @@
     <group>
 
 
-//M0 0V34H90V0
+//M0
         <path
             android:pathData="M0 0V34H90V0"
             android:fillColor="#FFFFFF"

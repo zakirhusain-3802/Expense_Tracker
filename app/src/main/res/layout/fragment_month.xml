@@ -84,11 +84,11 @@
                 android:text="Income" />
 
             <TextView
-                android:id="@+id/income_month"
-                android:layout_width="wrap_content"
+                android:id="@+id/inc_month"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:gravity="center"
                 android:text="0"
                 android:textColor="#3F51B5"
                 android:textSize="15sp" />
@@ -109,11 +109,11 @@
                 android:text="Expense" />
 
             <TextView
-                android:id="@+id/expense_month"
-                android:layout_width="wrap_content"
+                android:id="@+id/exp_month"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+android:gravity="center"
                 android:text="0"
                 android:textColor="#A30000"
                 android:textSize="15sp" />
@@ -134,11 +134,11 @@
                 android:text="Total" />
 
             <TextView
-                android:id="@+id/total_month"
-                android:layout_width="wrap_content"
+                android:id="@+id/tot_month"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
+                android:gravity="center"
                 android:text="0"
                 android:textColor="#1E1E1E"
                 android:textSize="15sp" />
