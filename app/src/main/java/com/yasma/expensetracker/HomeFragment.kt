@@ -56,70 +56,18 @@ class HomeFragment : Fragment(), recycle_Interface {
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("ResourceType")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         firebaseAuth = FirebaseAuth.getInstance()
-        val nodata = view.findViewById<ImageView>(R.id.nodata)
-        val log_out = view.findViewById<TextView>(R.id.log_out)
+
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-        // Store a username
-
-
-//        // Retrieve and display the stored username
-//        val storedUsername = retrieveUsername()
-//        println("Stored Username:" + storedUsername.toString())
-//        if (storedUsername != "") {
-////            log_out.text = storedUsername.toString()
-//
-//        } else {
-//
-//
-//            val usersRef = FirebaseDatabase.getInstance().getReference("Users")
-//            val currentUserUid = firebaseAuth.currentUser!!.uid
-//
-//// Method 1: Read data once using addListenerForSingleValueEvent
-//            usersRef.child(currentUserUid)
-//                .addListenerForSingleValueEvent(object : ValueEventListener {
-//                    override fun onDataChange(snapshot: DataSnapshot) {
-//                        if (snapshot.exists()) {
-//                            // Data exists, you can access it using snapshot.value
-//                            val userData =
-//                                snapshot.value
-////                            log_out.text = userData.toString()
-//                            val username = userData.toString()
-//
-//                            storeUsername(username)
-//
-//                        } else {
-//
-//                        }
-//                    }
-//
-//                    override fun onCancelled(error: DatabaseError) {
-//                        TODO("Not yet implemented")
-//                    }
-//                })
-//        }
-
-//        log_out.setOnClickListener {
-//            firebaseAuth.signOut()
-//            storeUsername("")
-//
-//            val intent = Intent(context, Login_Activity::class.java)
-//            startActivity(intent)
-//        }
-//        var currentMonth:TextView=view.findViewById(R.id.currentmont)
         val daily_month: TextView = view.findViewById(R.id.daily_month)
-        val daily_txt: TextView = view.findViewById(R.id.daily_txt)
-        val fm1: FrameLayout = view.findViewById(R.id.frameLayout3)
         val cal = Calendar.getInstance()
-
 
         val recycleView = view.Recycle
         val sdf = SimpleDateFormat("MMM")
@@ -162,15 +110,6 @@ class HomeFragment : Fragment(), recycle_Interface {
         recycleView.adapter = monthAdapter
 
 
-
-
-
-
-
-
-
-
-
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
 
         mUserViewModel.yeardata(current_month, "Expense")
@@ -180,13 +119,10 @@ class HomeFragment : Fragment(), recycle_Interface {
         mUserViewModel.yeardata(current_month, "Income")
             .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
 
-
         val b: ImageButton = view.findViewById(R.id.imageButton)
         b.setOnClickListener {
 
             val update = input_data()
-
-
             update.show(childFragmentManager, "Heloo")
 
         }
@@ -208,15 +144,10 @@ class HomeFragment : Fragment(), recycle_Interface {
             daily_month.text = curr_date1 + " " + y1.toString()
             println(curr_date1 + " " + m1.toString())
 
-
             val dates =
                 getDatesForMonth(y1, m1 - 1) // a method to get a list of dates for the month
             var monthAdapter = MonthAdapter1(
-                dates,
-                mUserViewModel,
-                (m1.toString() + "/" + y1.toString()),
-                today,
-                this
+                dates, mUserViewModel, (m1.toString() + "/" + y1.toString()), today, this
             )
             recycleView.adapter = monthAdapter
 
@@ -243,16 +174,11 @@ class HomeFragment : Fragment(), recycle_Interface {
             val dateFormat1 = SimpleDateFormat("MMM")
             val curr_date1 = dateFormat1.format(cal.time)
             daily_month.text = curr_date1 + " " + y1.toString()
-//            println(curr_date1+" "+m1.toString())
 
             val dates =
                 getDatesForMonth(y1, m1 - 1) // a method to get a list of dates for the month
             var monthAdapter = MonthAdapter1(
-                dates,
-                mUserViewModel,
-                (m1.toString() + "/" + y1.toString()),
-                today,
-                this
+                dates, mUserViewModel, (m1.toString() + "/" + y1.toString()), today, this
             )
             recycleView.adapter = monthAdapter
 
@@ -262,7 +188,6 @@ class HomeFragment : Fragment(), recycle_Interface {
 
             mUserViewModel.yeardata(m1.toString() + "/" + y1.toString(), "Income")
                 .observe(viewLifecycleOwner, Observer { sum -> print_inc(sum.toString()) })
-
 
         }
         daily_month.setOnClickListener {
@@ -274,7 +199,6 @@ class HomeFragment : Fragment(), recycle_Interface {
     }
 
     private fun starts(recycleView: RecyclerView?, currentDate: String) {
-
 
     }
 
@@ -304,9 +228,7 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     fun print_exp(exp: String) {
 
-
         var i = income.text.toString()
-
 
         var income1: Int = Integer.parseInt(i.toString())
         var expense1: Int
@@ -329,7 +251,6 @@ class HomeFragment : Fragment(), recycle_Interface {
         nodata.isVisible = status.text == "0"
     }
 
-
     fun update(position: yeardata) {
         val args: Bundle = Bundle()
         args.putString("title", position.title.toString())
@@ -342,11 +263,9 @@ class HomeFragment : Fragment(), recycle_Interface {
 
         val update = update_fragment()
         update.arguments = args
-
         update.show(childFragmentManager, "Heloo")
 
     }
-
     override fun onItemClick(position: yeardata) {
 
         update(position)
@@ -354,15 +273,13 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     override fun deletitem(currentItem: yeardata) {
 
-        // mUserViewModel.deletData(currentItem)
         val dialogBuilder = AlertDialog.Builder(requireActivity())
         dialogBuilder.setMessage("")
             // if the dialog is cancelable
             .setCancelable(false)
             .setNegativeButton("Cancle", DialogInterface.OnClickListener { dialog, id ->
                 dialog.dismiss()
-            })
-            .setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
+            }).setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, id ->
                 mUserViewModel.deletData(currentItem)
                 dialog.dismiss()
 
@@ -373,11 +290,8 @@ class HomeFragment : Fragment(), recycle_Interface {
         alert.show()
         Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
     }
-
     override fun monthdat(date: String) {
-
     }
-
     override fun nodata() {
 
     }
@@ -397,18 +311,9 @@ class HomeFragment : Fragment(), recycle_Interface {
 
     }
 
-//    private fun storeUsername(username: String) {
-//        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-//        editor.putString("username", username)
-//        editor.apply()
-//        editor.commit()
-//        println("stored data")
-//    }
-
     private fun retrieveUsername(): String {
         return sharedPreferences.getString("username", "1") ?: "1"
     }
-
 
 }
 

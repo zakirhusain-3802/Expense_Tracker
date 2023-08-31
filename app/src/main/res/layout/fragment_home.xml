@@ -159,7 +159,7 @@
             android:gravity="center"
             android:background="@drawable/daliy_div"
 
-            android:text="Monthly"
+            android:text="Daily"
             android:textColor="#FF9800"
 android:padding="5dp"
             android:textSize="15sp"

@@ -50,8 +50,6 @@ class MonthFragment : Fragment(), recycle_Interface {
     private var i: Int = 0
     private lateinit var nodata: ImageView
 
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ResourceType")
     override fun onCreateView(
@@ -63,7 +61,6 @@ class MonthFragment : Fragment(), recycle_Interface {
         val month_name: TextView = view.findViewById(R.id.month_name)
         nodata = view.findViewById(R.id.nodata1)
 
-
         var nodta: Boolean = false
         //getting current year
         val y = SimpleDateFormat("yyyy")
@@ -73,41 +70,29 @@ class MonthFragment : Fragment(), recycle_Interface {
         val m = SimpleDateFormat("M")
         var month = Integer.parseInt(m.format(Date()))
 
-
         val adapter = ListAdapter(this)
         val recycleView = view.month_recycle
 
         var printmont: String = "/" + year.toString()
 
-
         val arr_back: Button = view.findViewById(R.id.arr_back)
         val arr_up: Button = view.findViewById(R.id.arr_up)
 
-//        val inc_mont:TextView=view.findViewById(R.id.income_month)
-//        val exp_mont:TextView=view.findViewById(R.id.expense_month)
-//        val bal:TextView=view.findViewById(R.id.total_month)
-
-
-
-
-
+//
 
         recycleView.adapter = adapter
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         mUserViewModel = ViewModelProvider(this).get(ViewModelData::class.java)
 
-//        mUserViewModel.yeardata("02/07/2023","Income").observe(viewLifecycleOwner,Observer{ sum ->inc_mont.text=inc.toString()})
-          mUserViewModel.yearincome("%$year","Income").observe(viewLifecycleOwner,Observer{
-              sum->print_inc(sum.toString())
-          })
-        mUserViewModel.yearexpense("%$year","Expense").observe(viewLifecycleOwner,Observer{
-                sum->print_exp(sum.toString())
-//            println(sum.toString()+" Sum of Income")
+        mUserViewModel.yearincome("%$year", "Income").observe(viewLifecycleOwner, Observer { sum ->
+            print_inc(sum.toString())
         })
+        mUserViewModel.yearexpense("%$year", "Expense")
+            .observe(viewLifecycleOwner, Observer { sum ->
+                print_exp(sum.toString())
 
+            })
 
-
-//        getdata(mfor_data, adapter)
         //printing month name on title
         val cal = Calendar.getInstance()
         val month_date = SimpleDateFormat("MMMM")
@@ -131,15 +116,15 @@ class MonthFragment : Fragment(), recycle_Interface {
             starts(monthAdapter, recycleView)
             month_name.text = year.toString()
 
-//        mUserViewModel.yeardata("02/07/2023","Income").observe(viewLifecycleOwner,Observer{ sum ->inc_mont.text=inc.toString()})
-            mUserViewModel.yearincome("%$year","Income").observe(viewLifecycleOwner,Observer{
-                    sum->print_inc(sum.toString())
-            })
-            mUserViewModel.yearexpense("%$year","Expense").observe(viewLifecycleOwner,Observer{
-                    sum->print_exp(sum.toString())
-//            println(sum.toString()+" Sum of Income")
-            })
 
+            mUserViewModel.yearincome("%$year", "Income")
+                .observe(viewLifecycleOwner, Observer { sum ->
+                    print_inc(sum.toString())
+                })
+            mUserViewModel.yearexpense("%$year", "Expense")
+                .observe(viewLifecycleOwner, Observer { sum ->
+                    print_exp(sum.toString())
+                })
 
         }
         arr_up.setOnClickListener {
@@ -152,25 +137,22 @@ class MonthFragment : Fragment(), recycle_Interface {
             starts(monthAdapter, recycleView)
             month_name.text = year.toString()
 
-//        mUserViewModel.yeardata("02/07/2023","Income").observe(viewLifecycleOwner,Observer{ sum ->inc_mont.text=inc.toString()})
-            mUserViewModel.yearincome("%$year","Income").observe(viewLifecycleOwner,Observer{
-                    sum->print_inc(sum.toString())
-            })
-            mUserViewModel.yearexpense("%$year","Expense").observe(viewLifecycleOwner,Observer{
-                    sum->print_exp(sum.toString())
-//            println(sum.toString()+" Sum of Income")
-            })
-
+            mUserViewModel.yearincome("%$year", "Income")
+                .observe(viewLifecycleOwner, Observer { sum ->
+                    print_inc(sum.toString())
+                })
+            mUserViewModel.yearexpense("%$year", "Expense")
+                .observe(viewLifecycleOwner, Observer { sum ->
+                    print_exp(sum.toString())
+                })
         }
         return view
-
     }
 
     private fun starts(monthAdapter: MonthAdapter, recycleView: RecyclerView?) {
         recycleView?.adapter = monthAdapter
 
     }
-
 
     private fun printtoast(toString: String) {
 
@@ -187,12 +169,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         } else if (month_ind == 12) {
             month_ind = 1
             month_name = month_ind
-
-
         }
-
-//        println("month name index: "+month_name)
-
         return month_name
     }
 
@@ -203,19 +180,12 @@ class MonthFragment : Fragment(), recycle_Interface {
         if (month_ind > 1) {
             month_ind -= 1
             month_name = month_ind
-
-
         } else if (month_ind == 1) {
             month_ind = 12
             month_name = month_ind
         }
 
-
-//        println("month name index: "+month_name)
-
         return month_name
-
-
     }
 
     fun update(position: yeardata) {
@@ -331,18 +301,13 @@ class MonthFragment : Fragment(), recycle_Interface {
             inc_month.text = "0"
         }
         var expense1: Int = Integer.parseInt(ex.toString())
-        tot_month.text=(income1-expense1).toString()
-
-
-
+        tot_month.text = (income1 - expense1).toString()
 
     }
 
     fun print_exp(exp: String) {
 
-
         var i = inc_month.text.toString()
-
 
         var income1: Int = Integer.parseInt(i.toString())
         var expense1: Int
@@ -353,12 +318,8 @@ class MonthFragment : Fragment(), recycle_Interface {
             expense1 = 0
             exp_month.text = "0"
         }
-        tot_month.text=(income1-expense1).toString()
-
-
-
+        tot_month.text = (income1 - expense1).toString()
 
     }
-
 
 }

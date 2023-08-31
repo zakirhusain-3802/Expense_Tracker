@@ -64,10 +64,10 @@
         android:id="@+id/frameLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="203dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-android:gravity="center"
+                android:gravity="center"
                 android:text="0"
                 android:textColor="#A30000"
                 android:textSize="15sp" />
