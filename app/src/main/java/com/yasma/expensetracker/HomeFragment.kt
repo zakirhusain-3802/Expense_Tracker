@@ -265,6 +265,7 @@ class HomeFragment : Fragment(), recycle_Interface {
         update.arguments = args
         update.show(childFragmentManager, "Heloo")
 
+
     }
     override fun onItemClick(position: yeardata) {
 

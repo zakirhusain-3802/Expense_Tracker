@@ -214,7 +214,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         val args: Bundle = Bundle()
         args.putString("date", date)
 
-        Toast.makeText(context, date, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, date, Toast.LENGTH_SHORT).show()
         val fragmentManager = parentFragmentManager
         val ft = fragmentManager.beginTransaction()
         val newFragment = monthdaliy()
@@ -251,7 +251,7 @@ class MonthFragment : Fragment(), recycle_Interface {
         val alert = dialogBuilder.create()
         alert.setTitle("Do you want to Delete record ?")
         alert.show()
-        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
 
     }
 

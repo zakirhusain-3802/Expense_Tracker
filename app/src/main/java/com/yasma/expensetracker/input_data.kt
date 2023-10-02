@@ -121,11 +121,11 @@ class input_data : DialogFragment() {
 
            if(ex.isChecked){
                 type="Expense"
-               Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
+//               Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
            }
             else{
                  type ="Income"
-               Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
+//               Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             }
             println(todaydate+"....")
             val try_date=todaydate
@@ -137,9 +137,7 @@ class input_data : DialogFragment() {
             var list=try_date.split(delim)
 //            println(list+" checking")
             var try_month= list[1].toString()+"/"+list[2].toString()
-            var years=list[2]
-            println(years + "input year")
-
+            println(try_month.toString())
 
             val deardata=yeardata(0,try_date,type,title,des, try_month, amount)
             dViewmodel.addData(deardata)

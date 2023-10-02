@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.yasma.expensetracker.data.ViewModelData
 import com.yasma.expensetracker.data.yeardata
+import kotlinx.android.synthetic.main.fragment_update_fragment.up_date
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -111,6 +112,7 @@ class update_fragment : DialogFragment() {
         val am: String = p.text.toString()
 
 
+
 //        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
 //        val currentDate = sdf.format(Date())
 //        val m=SimpleDateFormat("MM")
@@ -131,19 +133,24 @@ class update_fragment : DialogFragment() {
 
             if (e.isChecked) {
                 type = "Expense"
-                Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             } else {
                 type = "Income"
-                Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, type, Toast.LENGTH_SHORT).show()
             }
+            val try_date=up_date.text.toString()
+
             val delim="/"
-            var list= sel_mont1.split(delim)
+            var list= try_date.split(delim)
 
-            var years=list[2]
-            println(years + "update  year")
+            var try_month= list[1].toString()+"/"+list[2].toString()
+            println(try_month.toString())
+
+//            var years=list[2]
+//            println(years + "update  year")
 
 
-            val updateUSER = yeardata(id, currentdate, type, title, des, sel_mont1, amount)
+            val updateUSER = yeardata(id, currentdate, type, title, des, try_month, amount)
             duViewmodel.updateData(updateUSER)
             dismiss()
         }

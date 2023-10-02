@@ -14,9 +14,9 @@ android {
     defaultConfig {
         applicationId "com.yasma.expensetracker"
         minSdk 22
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        targetSdk 33
+        versionCode 3
+        versionName "1.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this) {}
 
         val adView = AdView(this)
-
         adView.setAdSize(AdSize.BANNER)
 
 //        adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
