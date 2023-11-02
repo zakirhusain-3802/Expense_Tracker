@@ -3,6 +3,7 @@
 # Expense Tracker - Android Application
 
 Expense Tracker is an Android application developed using Kotlin in Android Studio. The application allows users to easily track their expenses and income by adding transactions. This README file provides an overview of the application's features, installation instructions, and usage guidelines.
+App video link: https://drive.google.com/file/d/1uj4WVAru7Pu-etDqibmUvYTCjRe02IDT/view?usp=drive_link
 
 ## Features
 
